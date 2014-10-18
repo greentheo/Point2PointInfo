@@ -1,7 +1,7 @@
 # Phonegap-cli specific #
 #########################
 platforms
-phonegap/www/**
+# phonegap/www/**     KH - commented this out.  not sure why we shouldn’t commit this.
 phonegap/.cordova/config.json
 
 # Compiled source #
