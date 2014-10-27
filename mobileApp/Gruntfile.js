@@ -1,4 +1,4 @@
-// Generated on 2014-10-24 using generator-phonegap 0.1.2
+// Generated on 2014-10-26 using generator-phonegap 0.1.2
 'use strict';
 
 // # Globbing
@@ -250,9 +250,16 @@ module.exports = function (grunt) {
                         '*.{ico,png,txt}',
                         '.htaccess',
                         'images/{,*/}*.{webp,gif}',
-						'res/**',
+                        'res/**',
                         'styles/fonts/{,*/}*.*'
                     ]
+                },
+                {
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.app %>/styles/mobile/images',
+                    src: ['*.*'],
+                    dest: '<%= yeoman.dist %>/styles/images'
                 }]
             },
             styles: {
