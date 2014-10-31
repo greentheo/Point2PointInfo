@@ -1,5 +1,9 @@
 'use strict';
 
+var isApp = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+var personalOptionsVm,
+    kendoApp;
+
 window.app = {
     // Application Constructor
     initialize: function () {
@@ -20,28 +24,43 @@ window.app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         window.app.receivedEvent('deviceready');
+
+        initMobileApp();
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
         /*jslint browser:true */
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+        //var parentElement = document.getElementById(id);
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        //var listeningElement = parentElement.querySelector('.listening');
+        //
+        //listeningElement.setAttribute('style', 'display:none;');
     }
 };
 
 /*global window */
 window.app.initialize();
 
-var personalOptionsVm = kendo.observable({
-    userName: 'Krazy Kora',
-    trackLocation: true
-});
+var initMobileApp = function () {
 
-var kendoApp = new kendo.mobile.Application($(document).body,
-    {
-        transition: 'slide'
+    personalOptionsVm = kendo.observable({
+        userName: 'Krazy Kora',
+        trackLocation: true,
+        isApp: isApp,
+        isAppText: function() {
+            return this.get("isApp") === true ? "Yes" : "No";
+        }
     });
+
+    kendoApp = new kendo.mobile.Application($(document).body,
+        {
+            transition: 'slide'
+        });
+
+};
+
+
+if (!isApp) {
+    console.log("web app");
+    initMobileApp();
+}

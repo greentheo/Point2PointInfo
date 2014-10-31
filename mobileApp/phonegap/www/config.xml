@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.point2point" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Point 2 Point</name>
+    <name>Point2Point</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Yeoman generated Phonegap project
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
         PhoneGap Team
