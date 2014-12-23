@@ -1,7 +1,299 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="af099719-b0ce-49d9-ab1e-ab1e3de8bfe9" name="Default" comment="" />
+    <list default="true" id="af099719-b0ce-49d9-ab1e-ab1e3de8bfe9" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/MIT-LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/dist/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/dist/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/dist/jquery.min.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/ajax.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/ajax/jsonp.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/ajax/load.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/ajax/parseJSON.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/ajax/parseXML.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/ajax/script.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/ajax/var/nonce.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/ajax/var/rquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/ajax/xhr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/attributes.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/attributes/attr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/attributes/classes.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/attributes/prop.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/attributes/support.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/attributes/val.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/callbacks.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/core.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/core/access.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/core/init.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/core/parseHTML.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/core/ready.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/core/var/rsingleTag.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/css.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/css/addGetHookIf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/css/curCSS.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/css/defaultDisplay.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/css/hiddenVisibleSelectors.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/css/support.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/css/swap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/css/var/cssExpand.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/css/var/getStyles.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/css/var/isHidden.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/css/var/rmargin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/css/var/rnumnonpx.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/data.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/data/Data.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/data/accepts.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/data/var/data_priv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/data/var/data_user.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/deferred.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/deprecated.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/dimensions.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/effects.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/effects/Tween.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/effects/animatedSelector.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/event.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/event/alias.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/event/support.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/exports/amd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/exports/global.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/intro.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/manipulation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/manipulation/_evalUrl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/manipulation/support.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/manipulation/var/rcheckableType.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/offset.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/outro.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/queue.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/queue/delay.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/selector-native.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/selector-sizzle.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/selector.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/serialize.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/sizzle/dist/sizzle.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/sizzle/dist/sizzle.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/sizzle/dist/sizzle.min.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/traversing.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/traversing/findFilter.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/traversing/var/rneedsContext.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/var/arr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/var/class2type.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/var/concat.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/var/hasOwn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/var/indexOf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/var/pnum.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/var/push.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/var/rnotwhite.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/var/slice.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/var/strundefined.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/var/support.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/var/toString.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/bower_components/jquery/src/wrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/scripts/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/scripts/kendo.mobile.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/main.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/actionsheet.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/all.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/base.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/button.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/buttongroup.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/drawer.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/forms.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/light.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/listview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/modalview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/navbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/popover.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/scroller.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/scrollview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/splitview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/switch.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/tabstrip.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/template.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/android/toolbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/actionsheet.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/all.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/base.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/button.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/buttongroup.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/drawer.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/forms.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/listview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/modalview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/navbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/popover.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/scroller.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/scrollview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/splitview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/switch.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/tabstrip.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/template.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/blackberry/toolbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/actionsheet.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/after.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/all.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/base.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/button.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/buttongroup.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/drawer.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/forms.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/icons.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/listview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/mixins.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/modalview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/navbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/popover.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/scroller.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/scrollview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/splitview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/switch.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/tabstrip.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/toolbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/common/workarounds.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/actionsheet.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/all.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/base.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/button.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/buttongroup.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/drawer.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/forms.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/listview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/modalview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/navbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/popover.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/scroller.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/scrollview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/splitview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/switch.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/tabstrip.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/template.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/flat/toolbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/images/back.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/images/kendoui.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/images/kendoui.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/images/kendoui.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/images/wp8_icons.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/images/wp8_inverseicons.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/actionsheet.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/all.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/base.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/button.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/buttongroup.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/drawer.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/forms.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/listview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/modalview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/navbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/popover.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/scroller.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/scrollview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/splitview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/switch.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/tabstrip.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/template.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios/toolbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/actionsheet.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/all.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/base.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/button.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/buttongroup.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/drawer.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/forms.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/listview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/modalview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/navbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/popover.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/scroller.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/scrollview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/splitview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/switch.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/tabstrip.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/template.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/ios7/toolbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.dataviz.mobile.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.dataviz.mobile.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.all.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.all.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.android.dark.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.android.dark.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.android.light.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.android.light.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.blackberry.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.blackberry.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.common.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.common.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.flat.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.flat.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.ios.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.ios.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.meego.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.meego.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.wp8.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/kendo.mobile.wp8.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/meego.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/actionsheet.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/all.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/base.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/button.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/buttongroup.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/drawer.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/forms.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/listview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/modalview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/navbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/popover.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/scroller.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/scrollview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/splitview.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/switch.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/tabstrip.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/template.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/mobile/wp8/toolbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/scripts/c2bbb1f2.index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/styles/c387acde.main.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/styles/images/back.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/styles/images/kendoui.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/styles/images/kendoui.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/styles/images/kendoui.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/styles/images/wp8_icons.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/styles/images/wp8_inverseicons.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/phonegap/plugins/ios.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/phonegap/www/config.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/phonegap/www/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/.bowerrc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/chai/.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/chai/History.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/chai/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/chai/ReleaseNotes.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/chai/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/chai/chai.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/chai/component.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/chai/karma.conf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/chai/karma.sauce.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/chai/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/chai/sauce.browsers.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/mocha/.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/mocha/History.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/mocha/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/mocha/Readme.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/mocha/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/mocha/media/logo.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/mocha/mocha.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/bower_components/mocha/mocha.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/spec/test.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gruntfile.js" afterPath="$PROJECT_DIR$/Gruntfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="mobileApp.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,38 +319,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.032822758" vertical-offset="450" max-vertical-offset="1275">
-              <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="1080">
-              <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/phonegap/platforms/ios/www/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="16.875" vertical-offset="405" max-vertical-offset="1155">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Gruntfile.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Gruntfile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1379" max-vertical-offset="5100">
-              <caret line="104" column="18" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
+            <state vertical-scroll-proportion="-0.079335794" vertical-offset="493" max-vertical-offset="1095">
+              <caret line="30" column="61" selection-start-line="30" selection-start-column="61" selection-end-line="30" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -70,6 +332,16 @@
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="true" />
     </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/index.html" />
+      </list>
+    </option>
   </component>
   <component name="JsBowerSettings">
     <exe-path>/usr/local/bin/bower</exe-path>
@@ -224,11 +496,12 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="35" />
     <option name="y" value="23" />
-    <option name="width" value="1297" />
+    <option name="width" value="1358" />
     <option name="height" value="873" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -282,231 +555,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phonegap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phonegap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phonegap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platforms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ios" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phonegap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platforms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ios" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobileApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jquery" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -521,9 +570,9 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="editorconfig.notification" value="Applied .editorconfig settings" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/phonegap/www" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="js.phonegap.settings.workdir" value="$PROJECT_DIR$/phonegap/www" />
-    <property name="options.lastSelected" value="Settings.JavaScript.Bower" />
+    <property name="options.lastSelected" value="preferences.keymap" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="restartRequiresConfirmation" value="true" />
@@ -635,29 +684,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1297" height="873" extended-state="0" />
-    <editor active="true" />
+    <frame x="35" y="23" width="1358" height="873" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32932693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34993616" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2413793" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34183267" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3525836" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34827146" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -683,15 +732,45 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1275">
-          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="733" max-vertical-offset="1275">
+          <caret line="46" column="61" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/index.js">
+    <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1080">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1560" max-vertical-offset="5100">
+          <caret line="104" column="18" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1560" max-vertical-offset="5100">
+          <caret line="104" column="18" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -701,7 +780,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1379" max-vertical-offset="5100">
           <caret line="104" column="18" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1379" max-vertical-offset="5100">
+          <caret line="104" column="18" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1379" max-vertical-offset="5100">
+          <caret line="104" column="18" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1275">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1379" max-vertical-offset="5100">
+          <caret line="104" column="18" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -709,14 +832,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="1200">
           <caret line="32" column="77" selection-start-line="32" selection-start-column="77" selection-end-line="32" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="265" max-vertical-offset="795">
-          <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -725,7 +840,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5130">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -734,42 +848,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="1200">
           <caret line="32" column="77" selection-start-line="32" selection-start-column="77" selection-end-line="32" selection-end-column="77" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="795">
-          <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phonegap/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phonegap/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phonegap/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phonegap/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="720">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -780,46 +858,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bower.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21028037" vertical-offset="0" max-vertical-offset="428">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phonegap/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68457943" vertical-offset="247" max-vertical-offset="675">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.jshintrc">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="530">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7113402" vertical-offset="0" max-vertical-offset="1815">
-          <caret line="23" column="105" selection-start-line="23" selection-start-column="105" selection-end-line="23" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/spec/test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1379" max-vertical-offset="5100">
-          <caret line="104" column="18" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -830,40 +872,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/phonegap/www/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
-          <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12903225" vertical-offset="0" max-vertical-offset="855">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.2393617" vertical-offset="0" max-vertical-offset="855">
+          <caret line="9" column="57" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/phonegap/platforms/ios/www/index.html">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="16.875" vertical-offset="405" max-vertical-offset="1155">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/index.js">
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="1080">
-          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
-          <folding />
+        <state vertical-scroll-proportion="2.7561839" vertical-offset="0" max-vertical-offset="5100">
+          <caret line="104" column="18" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.032822758" vertical-offset="450" max-vertical-offset="1275">
-          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+        <state vertical-scroll-proportion="-0.079335794" vertical-offset="493" max-vertical-offset="1095">
+          <caret line="30" column="61" selection-start-line="30" selection-start-column="61" selection-end-line="30" selection-end-column="61" />
           <folding />
         </state>
       </provider>
