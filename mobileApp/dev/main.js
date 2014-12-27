@@ -1,4 +1,422 @@
-/*!
+(function() {
+/**
+ * almond 0.2.6 Copyright (c) 2011-2012, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/jrburke/almond for details
+ */
+//Going sloppy to avoid 'use strict' string cost, but strict practices should
+//be followed.
+/*jslint sloppy: true */
+/*global setTimeout: false */
+
+var requirejs, require, define;
+(function (undef) {
+    var main, req, makeMap, handlers,
+        defined = {},
+        waiting = {},
+        config = {},
+        defining = {},
+        hasOwn = Object.prototype.hasOwnProperty,
+        aps = [].slice;
+
+    function hasProp(obj, prop) {
+        return hasOwn.call(obj, prop);
+    }
+
+    /**
+     * Given a relative module name, like ./something, normalize it to
+     * a real name that can be mapped to a path.
+     * @param {String} name the relative name
+     * @param {String} baseName a real name that the name arg is relative
+     * to.
+     * @returns {String} normalized name
+     */
+    function normalize(name, baseName) {
+        var nameParts, nameSegment, mapValue, foundMap,
+            foundI, foundStarMap, starI, i, j, part,
+            baseParts = baseName && baseName.split("/"),
+            map = config.map,
+            starMap = (map && map['*']) || {};
+
+        //Adjust any relative paths.
+        if (name && name.charAt(0) === ".") {
+            //If have a base name, try to normalize against it,
+            //otherwise, assume it is a top-level require that will
+            //be relative to baseUrl in the end.
+            if (baseName) {
+                //Convert baseName to array, and lop off the last part,
+                //so that . matches that "directory" and not name of the baseName's
+                //module. For instance, baseName of "one/two/three", maps to
+                //"one/two/three.js", but we want the directory, "one/two" for
+                //this normalization.
+                baseParts = baseParts.slice(0, baseParts.length - 1);
+
+                name = baseParts.concat(name.split("/"));
+
+                //start trimDots
+                for (i = 0; i < name.length; i += 1) {
+                    part = name[i];
+                    if (part === ".") {
+                        name.splice(i, 1);
+                        i -= 1;
+                    } else if (part === "..") {
+                        if (i === 1 && (name[2] === '..' || name[0] === '..')) {
+                            //End of the line. Keep at least one non-dot
+                            //path segment at the front so it can be mapped
+                            //correctly to disk. Otherwise, there is likely
+                            //no path mapping for a path starting with '..'.
+                            //This can still fail, but catches the most reasonable
+                            //uses of ..
+                            break;
+                        } else if (i > 0) {
+                            name.splice(i - 1, 2);
+                            i -= 2;
+                        }
+                    }
+                }
+                //end trimDots
+
+                name = name.join("/");
+            } else if (name.indexOf('./') === 0) {
+                // No baseName, so this is ID is resolved relative
+                // to baseUrl, pull off the leading dot.
+                name = name.substring(2);
+            }
+        }
+
+        //Apply map config if available.
+        if ((baseParts || starMap) && map) {
+            nameParts = name.split('/');
+
+            for (i = nameParts.length; i > 0; i -= 1) {
+                nameSegment = nameParts.slice(0, i).join("/");
+
+                if (baseParts) {
+                    //Find the longest baseName segment match in the config.
+                    //So, do joins on the biggest to smallest lengths of baseParts.
+                    for (j = baseParts.length; j > 0; j -= 1) {
+                        mapValue = map[baseParts.slice(0, j).join('/')];
+
+                        //baseName segment has  config, find if it has one for
+                        //this name.
+                        if (mapValue) {
+                            mapValue = mapValue[nameSegment];
+                            if (mapValue) {
+                                //Match, update name to the new value.
+                                foundMap = mapValue;
+                                foundI = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (foundMap) {
+                    break;
+                }
+
+                //Check for a star map match, but just hold on to it,
+                //if there is a shorter segment match later in a matching
+                //config, then favor over this star map.
+                if (!foundStarMap && starMap && starMap[nameSegment]) {
+                    foundStarMap = starMap[nameSegment];
+                    starI = i;
+                }
+            }
+
+            if (!foundMap && foundStarMap) {
+                foundMap = foundStarMap;
+                foundI = starI;
+            }
+
+            if (foundMap) {
+                nameParts.splice(0, foundI, foundMap);
+                name = nameParts.join('/');
+            }
+        }
+
+        return name;
+    }
+
+    function makeRequire(relName, forceSync) {
+        return function () {
+            //A version of a require function that passes a moduleName
+            //value for items that may need to
+            //look up paths relative to the moduleName
+            return req.apply(undef, aps.call(arguments, 0).concat([relName, forceSync]));
+        };
+    }
+
+    function makeNormalize(relName) {
+        return function (name) {
+            return normalize(name, relName);
+        };
+    }
+
+    function makeLoad(depName) {
+        return function (value) {
+            defined[depName] = value;
+        };
+    }
+
+    function callDep(name) {
+        if (hasProp(waiting, name)) {
+            var args = waiting[name];
+            delete waiting[name];
+            defining[name] = true;
+            main.apply(undef, args);
+        }
+
+        if (!hasProp(defined, name) && !hasProp(defining, name)) {
+            throw new Error('No ' + name);
+        }
+        return defined[name];
+    }
+
+    //Turns a plugin!resource to [plugin, resource]
+    //with the plugin being undefined if the name
+    //did not have a plugin prefix.
+    function splitPrefix(name) {
+        var prefix,
+            index = name ? name.indexOf('!') : -1;
+        if (index > -1) {
+            prefix = name.substring(0, index);
+            name = name.substring(index + 1, name.length);
+        }
+        return [prefix, name];
+    }
+
+    function onResourceLoad(name, defined, deps){
+        if(requirejs.onResourceLoad && name){
+            requirejs.onResourceLoad({defined:defined}, {id:name}, deps);
+        }
+    }
+
+    /**
+     * Makes a name map, normalizing the name, and using a plugin
+     * for normalization if necessary. Grabs a ref to plugin
+     * too, as an optimization.
+     */
+    makeMap = function (name, relName) {
+        var plugin,
+            parts = splitPrefix(name),
+            prefix = parts[0];
+
+        name = parts[1];
+
+        if (prefix) {
+            prefix = normalize(prefix, relName);
+            plugin = callDep(prefix);
+        }
+
+        //Normalize according
+        if (prefix) {
+            if (plugin && plugin.normalize) {
+                name = plugin.normalize(name, makeNormalize(relName));
+            } else {
+                name = normalize(name, relName);
+            }
+        } else {
+            name = normalize(name, relName);
+            parts = splitPrefix(name);
+            prefix = parts[0];
+            name = parts[1];
+            if (prefix) {
+                plugin = callDep(prefix);
+            }
+        }
+
+        //Using ridiculous property names for space reasons
+        return {
+            f: prefix ? prefix + '!' + name : name, //fullName
+            n: name,
+            pr: prefix,
+            p: plugin
+        };
+    };
+
+    function makeConfig(name) {
+        return function () {
+            return (config && config.config && config.config[name]) || {};
+        };
+    }
+
+    handlers = {
+        require: function (name) {
+            return makeRequire(name);
+        },
+        exports: function (name) {
+            var e = defined[name];
+            if (typeof e !== 'undefined') {
+                return e;
+            } else {
+                return (defined[name] = {});
+            }
+        },
+        module: function (name) {
+            return {
+                id: name,
+                uri: '',
+                exports: defined[name],
+                config: makeConfig(name)
+            };
+        }
+    };
+
+    main = function (name, deps, callback, relName) {
+        var cjsModule, depName, ret, map, i,
+            args = [],
+            usingExports;
+
+        //Use name if no relName
+        relName = relName || name;
+
+        //Call the callback to define the module, if necessary.
+        if (typeof callback === 'function') {
+
+            //Pull out the defined dependencies and pass the ordered
+            //values to the callback.
+            //Default to [require, exports, module] if no deps
+            deps = !deps.length && callback.length ? ['require', 'exports', 'module'] : deps;
+            for (i = 0; i < deps.length; i += 1) {
+                map = makeMap(deps[i], relName);
+                depName = map.f;
+
+                //Fast path CommonJS standard dependencies.
+                if (depName === "require") {
+                    args[i] = handlers.require(name);
+                } else if (depName === "exports") {
+                    //CommonJS module spec 1.1
+                    args[i] = handlers.exports(name);
+                    usingExports = true;
+                } else if (depName === "module") {
+                    //CommonJS module spec 1.1
+                    cjsModule = args[i] = handlers.module(name);
+                } else if (hasProp(defined, depName) ||
+                    hasProp(waiting, depName) ||
+                    hasProp(defining, depName)) {
+                    args[i] = callDep(depName);
+                } else if (map.p) {
+                    map.p.load(map.n, makeRequire(relName, true), makeLoad(depName), {});
+                    args[i] = defined[depName];
+                } else {
+                    throw new Error(name + ' missing ' + depName);
+                }
+            }
+
+            ret = callback.apply(defined[name], args);
+
+            if (name) {
+                //If setting exports via "module" is in play,
+                //favor that over return value and exports. After that,
+                //favor a non-undefined return value over exports use.
+                if (cjsModule && cjsModule.exports !== undef &&
+                    cjsModule.exports !== defined[name]) {
+                    defined[name] = cjsModule.exports;
+                } else if (ret !== undef || !usingExports) {
+                    //Use the return value from the function.
+                    defined[name] = ret;
+                }
+            }
+        } else if (name) {
+            //May just be an object definition for the module. Only
+            //worry about defining if have a module name.
+            defined[name] = callback;
+        }
+
+        onResourceLoad(name, defined, args);
+    };
+
+    requirejs = require = req = function (deps, callback, relName, forceSync, alt) {
+        if (typeof deps === "string") {
+            if (handlers[deps]) {
+                //callback in this case is really relName
+                return handlers[deps](callback);
+            }
+            //Just return the module wanted. In this scenario, the
+            //deps arg is the module name, and second arg (if passed)
+            //is just the relName.
+            //Normalize module name, if it contains . or ..
+            return callDep(makeMap(deps, callback).f);
+        } else if (!deps.splice) {
+            //deps is a config object, not an array.
+            config = deps;
+            if (callback.splice) {
+                //callback is an array, which means it is a dependency list.
+                //Adjust args if there are dependencies
+                deps = callback;
+                callback = relName;
+                relName = null;
+            } else {
+                deps = undef;
+            }
+        }
+
+        //Support require(['a'])
+        callback = callback || function () {};
+
+        //If relName is a function, it is an errback handler,
+        //so remove it.
+        if (typeof relName === 'function') {
+            relName = forceSync;
+            forceSync = alt;
+        }
+
+        //Simulate async callback;
+        if (forceSync) {
+            main(undef, deps, callback, relName);
+        } else {
+            //Using a non-zero value because of concern for what old browsers
+            //do, and latest browsers "upgrade" to 4 if lower value is used:
+            //http://www.whatwg.org/specs/web-apps/current-work/multipage/timers.html#dom-windowtimers-settimeout:
+            //If want a value immediately, use require('id') instead -- something
+            //that works in almond on the global level, but not guaranteed and
+            //unlikely to work in other AMD implementations.
+            setTimeout(function () {
+                main(undef, deps, callback, relName);
+            }, 4);
+        }
+
+        return req;
+    };
+
+    /**
+     * Just drops the config on the floor, but returns req in case
+     * the config return value is used.
+     */
+    req.config = function (cfg) {
+        config = cfg;
+        if (config.deps) {
+            req(config.deps, config.callback);
+        }
+        return req;
+    };
+
+    /**
+     * Expose module registry for debugging and tooling
+     */
+    requirejs._defined = defined;
+
+    define = function (name, deps, callback) {
+
+        //This module may not have dependencies
+        if (!deps.splice) {
+            //deps is not an array, so probably means
+            //an object literal or factory function for
+            //the value. Adjust args.
+            callback = deps;
+            deps = [];
+        }
+
+        if (!hasProp(defined, name) && !hasProp(waiting, name)) {
+            waiting[name] = [name, deps, callback];
+        }
+    };
+
+    define.amd = {
+        jQuery: true
+    };
+}());/*!
  * jQuery JavaScript Library v2.1.1
  * http://jquery.com/
  *
@@ -15043,6 +15461,33 @@ function (system, app, viewLocator, deviceEvents, ko) {
         app.setRoot('viewmodels/shell', 'entrance');
 
     });
+
+    // work-around so the expanded mobile navbar will collapse when a link is clicked
+    // https://github.com/twbs/bootstrap/issues/12852
+    $(document).on('click','.navbar-collapse.in',function(e) {
+        if( $(e.target).is('a') ) {
+            $(this).collapse('hide');
+        }
+    });
+});
+define('viewmodels/collector',[], function() {
+    return {
+        userName: '',
+        buttonCaption: 'Start',
+        toggleCollection: function() {
+            var toggle = { Start: 'End', End: 'Start' };
+            var command = this.buttonCaption;
+            this.buttonCaption = toggle[this.buttonCaption];
+
+            if (command === 'Start') {
+                // start subscribing
+                console.log('Collection started!');
+            } else {
+                // stop
+                console.log('Collection stopped!');
+            }
+        }
+    };
 });
 /**
  * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
@@ -15203,7 +15648,7 @@ define('viewmodels/flickr',['plugins/http', 'durandal/app', 'knockout'], functio
         }
     };
 });
-define('viewmodels/locationinfo',[], function() {
+define('viewmodels/locationdata',[], function() {
    return {
        locationPoints: []
    };
@@ -16678,20 +17123,11 @@ define('viewmodels/shell',['plugins/router', 'durandal/app'], function (router, 
         router: router,
         activate: function () {
             router.map([
-                { route: '', title:'Welcome', moduleId: 'viewmodels/welcome', nav: true },
-                { route: 'locationinfo', title: 'Collection', moduleId: 'viewmodels/locationinfo', nav: true }  // note: maybe we don't want this on the nav bar
+                { route: '', title: 'Collector', moduleId: 'viewmodels/collector', nav: true },
+                { route: 'locationdata', title: 'Data', moduleId: 'viewmodels/locationdata', nav: true }  // note: maybe we don't want this on the nav bar
             ]).buildNavigationModel();
             
             return router.activate();
-        }
-    };
-});
-define('viewmodels/welcome',[], function() {
-    // this will be the basic info page, including user id for now, and button to "begin collecting"
-    return {
-        userName: "mario",
-        startCollection: function() {
-            // here's where we start
         }
     };
 });
@@ -18191,16 +18627,18 @@ define('text',['module'], function (module) {
     return text;
 });
 
-define('text!index.html',[],function () { return '<!DOCTYPE html>\n<!--\n    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.\n\n    Licensed to the Apache Software Foundation (ASF) under one\n    or more contributor license agreements.  See the NOTICE file\n    distributed with this work for additional information\n    regarding copyright ownership.  The ASF licenses this file\n    to you under the Apache License, Version 2.0 (the\n    "License"); you may not use this file except in compliance\n    with the License.  You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing,\n    software distributed under the License is distributed on an\n    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\n     KIND, either express or implied.  See the License for the\n    specific language governing permissions and limitations\n    under the License.\n-->\n<html>\n<head>\n    <meta charset="utf-8" />\n    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />\n    <meta name="format-detection" content="telephone=no" />\n    <meta name="msapplication-tap-highlight" content="no" />\n    <meta name="apple-mobile-web-app-capable" content="yes" />\n    <meta name="apple-mobile-web-app-status-bar-style" content="black" />\n    <link rel="apple-touch-startup-image" href="lib/durandal/img/ios-startup-image-landscape.png" media="(orientation:landscape)" />\n    <link rel="apple-touch-startup-image" href="lib/durandal/img/ios-startup-image-portrait.png" media="(orientation:portrait)" />\n    <link rel="apple-touch-icon" href="lib/durandal/img/icon.png"/>\n\n    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->\n    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />\n\n    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css" />\n    <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css" />\n    <link rel="stylesheet" href="css/ie10mobile.css" />\n    <link rel="stylesheet" href="../lib/durandal/css/durandal.css" />\n    <link rel="stylesheet" type="text/css" href="css/main.css" />\n\n    <script type="text/javascript">\n        if (navigator.userAgent.match(/IEMobile\\/10\\.0/)) {\n            var msViewportStyle = document.createElement("style");\n            var mq = "@@-ms-viewport{width:auto!important}";\n            msViewportStyle.appendChild(document.createTextNode(mq));\n            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);\n        }\n    </script>\n    <title>Point 2 Point Location Collector</title>\n</head>\n<body>\n\n    <div id="applicationHost">\n        <div class="splash">\n            <div class="message">\n                P2P Location Collector\n            </div>\n            <i class="fa fa-spinner fa-spin"></i>\n        </div>\n    </div>\n\n    <script type="text/javascript" src="cordova.js"></script>\n    <script src="../lib/require/require.js" data-main="../dev/main"></script>\n</body>\n</html>\n';});
+define('text!index.html',[],function () { return '<!DOCTYPE html>\n<!--\n    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.\n\n    Licensed to the Apache Software Foundation (ASF) under one\n    or more contributor license agreements.  See the NOTICE file\n    distributed with this work for additional information\n    regarding copyright ownership.  The ASF licenses this file\n    to you under the Apache License, Version 2.0 (the\n    "License"); you may not use this file except in compliance\n    with the License.  You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing,\n    software distributed under the License is distributed on an\n    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\n     KIND, either express or implied.  See the License for the\n    specific language governing permissions and limitations\n    under the License.\n-->\n<html>\n<head>\n    <meta charset="utf-8" />\n    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />\n    <meta name="format-detection" content="telephone=no" />\n    <meta name="msapplication-tap-highlight" content="no" />\n    <meta name="apple-mobile-web-app-capable" content="yes" />\n    <meta name="apple-mobile-web-app-status-bar-style" content="black" />\n    <link rel="apple-touch-startup-image" href="img/ios-startup-image-landscape.png" media="(orientation:landscape)" />\n    <link rel="apple-touch-startup-image" href="img/ios-startup-image-portrait.png" media="(orientation:portrait)" />\n    <link rel="apple-touch-icon" href="css/durandal/img/icon.png"/>\n\n    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->\n    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />\n\n    <link rel="stylesheet" href="css/bootstrap.min.css" />\n    <link rel="stylesheet" href="css/font-awesome.min.css" />\n    <link rel="stylesheet" href="css/ie10mobile.css" />\n    <link rel="stylesheet" href="css/durandal.css" />\n    <link rel="stylesheet" href="css/main.css" />\n\n    <script type="text/javascript">\n        if (navigator.userAgent.match(/IEMobile\\/10\\.0/)) {\n            var msViewportStyle = document.createElement("style");\n            var mq = "@@-ms-viewport{width:auto!important}";\n            msViewportStyle.appendChild(document.createTextNode(mq));\n            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);\n        }\n    </script>\n    <title>Point 2 Point Location Collector</title>\n</head>\n<body>\n\n    <div id="applicationHost">\n        <div class="splash">\n            <div class="message">\n                P2P Location Collector\n            </div>\n            <i class="fa fa-spinner fa-spin"></i>\n        </div>\n    </div>\n\n    <script type="text/javascript" src="cordova.js"></script>\n    <script src="../lib/require/require.js" data-main="main"></script>\n</body>\n</html>\n';});
 
 
-define('text!views/locationinfo.html',[],function () { return '<section>\n    <!-- let\'s just start with a list of collected location and acceleration values -->\n    <div>\n        <h3>This will display a list of collected location data.</h3>\n    </div>\n</section>';});
+define('text!views/collector.html',[],function () { return '<section>\r\n    <div class="container">\r\n        <div>\r\n            <div class="row">\r\n                <div class="col-xs-12 col-sm-12 pull-left">\r\n                    <h2>Collector</h2>\r\n                </div>\r\n            </div>\r\n            <div class="row">\r\n                <div class="form-group">\r\n                    <label for="userName">Collector Handle</label>\r\n                    <input type="text" class="form-control" id="userName" placeholder="Declare your handle" value="{{userName}}">\r\n                </div>\r\n                <button class="btn btn-default" data-bind="click: toggleCollection">{{buttonCaption}}</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>';});
 
 
-define('text!views/shell.html',[],function () { return '<div>\r\n    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">\r\n        <div class="navbar-header">\r\n            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">\r\n                <span class="sr-only">Toggle Navigation</span>\r\n                <span class="icon-bar"></span>\r\n                <span class="icon-bar"></span>\r\n                <span class="icon-bar"></span>\r\n            </button>\r\n            <a class="navbar-brand" href="#">\r\n                <i class="fa fa-home"></i>\r\n            </a>\r\n        </div>\r\n\r\n        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\r\n            <ul class="nav navbar-nav">\r\n            {{#foreach: router.navigationModel}}\r\n                <li data-bind="css.active: isActive">\r\n                    <a href="{{hash}}">{{title}}</a>\r\n                </li>\r\n            {{/foreach}}\r\n            </ul>\r\n\r\n            <ul class="nav navbar-nav navbar-right">\r\n                <li class="loader" data-bind="css.active: router.isNavigating">\r\n                    <i class="fa fa-spinner fa-spin fa-2x"></i>\r\n                </li>\r\n            </ul>\r\n\r\n        </div>\r\n    </nav>\r\n\r\n    <div class="page-host" data-bind="router.transition: \'entrance\'"></div>\r\n</div>';});
+define('text!views/locationdata.html',[],function () { return '<section>\n    <!-- let\'s just start with a list of collected location and acceleration values -->\n    <div>\n        <h3>This will display a list of collected location data.</h3>\n    </div>\n</section>';});
 
 
-define('text!views/welcome.html',[],function () { return '<section>\r\n    <h2>Set Info</h2>\r\n    <div>This will contain the form to set your user info and hit "Start"</div>\r\n    <div>Hello, {{userName}}\r\n        <!-- bootstrapped form to set info and click to start collection -->\r\n    </div>\r\n</section>';});
+define('text!views/shell.html',[],function () { return '<div>\r\n    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">\r\n        <div class="navbar-header">\r\n            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">\r\n                <span class="sr-only">Toggle Navigation</span>\r\n                <span class="icon-bar"></span>\r\n                <span class="icon-bar"></span>\r\n                <span class="icon-bar"></span>\r\n            </button>\r\n            <a class="navbar-brand" href="#">\r\n                <i class="fa fa-home"></i>\r\n            </a>\r\n        </div>\r\n\r\n        <div class="collapse navbar-collapse" id="navbar-collapse">\r\n            <ul class="nav navbar-nav">\r\n                {{#foreach: router.navigationModel}}\r\n                <li data-bind="css.active: isActive">\r\n                    <a href="{{hash}}">{{title}}</a>\r\n                </li>\r\n                {{/foreach}}\r\n            </ul>\r\n\r\n            <ul class="nav navbar-nav navbar-right">\r\n                <li class="loader" data-bind="css.active: router.isNavigating">\r\n                    <i class="fa fa-spinner fa-spin fa-2x"></i>\r\n                </li>\r\n            </ul>\r\n\r\n        </div>\r\n    </nav>\r\n\r\n    <nav role="navigation">\r\n        <ul class="nav nav-tabs">\r\n            {{#foreach: router.navigationModel}}\r\n            <li role="presentation" data-bind="css.active: isActive">\r\n                <a href="{{hash}}">{{title}}</a>\r\n            </li>\r\n            {{/foreach}}\r\n        </ul>\r\n    </nav>\r\n\r\n    <div class="page-host" data-bind="router.transition: \'entrance\'"></div>\r\n\r\n</div>';});
 
 
+require(["main"]);
+}());
 //# sourceMappingURL=main.js.map

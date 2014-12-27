@@ -13,7 +13,8 @@ module.exports = function(grunt) {
             },
             dev: {
                 options: {
-                    output: 'dev/main.js'
+                    output: 'dev/main.js',
+                    almond: true
                 }
             },
             prod: {
@@ -24,20 +25,29 @@ module.exports = function(grunt) {
                 }
             }
         },
+        clean: {
+            dev: ['dev/'],
+            prod: ['www/']
+        },
         copy: {
             dev: {
                 files: [
                     {   // everything but js, since we'll deal with that separately
                         expand: true,
-                        src: [ 'app/**', '!/app/**/*.js'],
+                        cwd: 'app/',
+                        src: [ '**', '!**/*.js', '!**/js', '!**/viewmodels'],
                         dest: 'dev/'
                     }
                 ],
                 options: {
                     process: function (content, srcpath) {
                         if (srcpath == 'app/index.html') {
-                            return replaceIndexPaths(content, 'dev');
+                            console.log('replacing index text');
+                            // reference the built version
+                            return content.replace('"../lib/require/require.js"', '"main.js"')
                         }
+
+                        return content;
                     }
                 }
             },
@@ -45,27 +55,46 @@ module.exports = function(grunt) {
                 files: [
                     {   // everything but js, since we'll deal with that separately
                         expand: true,
-                        src: [ 'app/**', '!/app/**/*.js'],
+                        cwd: 'app/',
+                        src: [ '**', '!**/*.js', '!**/js', '!**/viewmodels'],
                         dest: 'www/'
                     }
-                ]
+                ],
+                options: {
+                    process: function (content, srcpath) {
+                        if (srcpath == 'app/index.html') {
+                            console.log('replacing index text');
+                            // reference the built version
+                            return content.replace('"../lib/require/require.js"', '"main.js"')
+                        }
+
+                        return content;
+                    }
+                }
             }
         }
 
     });
 
-    var replaceIndexPaths = function(content, parentDest) {
-
-        // lib stuff
-
-        content.replace(/data-main="main"/g, 'data-main')
-    };
-
     // Load the plugin that provides the "durandaljs" task.
     grunt.loadNpmTasks('grunt-durandaljs');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Default task(s).
-    grunt.registerTask('default', ['durandaljs']);
+    //grunt.registerTask('default', ['durandaljs']);
+
+    grunt.registerTask('default', [
+        'clean:dev',
+        'copy:dev',
+        'durandaljs:dev'
+
+    ]);
+
+    grunt.registerTask('build', [
+        'clean:prod',
+        'copy:prod',
+        'durandaljs:prod'
+    ]);
 
 };
