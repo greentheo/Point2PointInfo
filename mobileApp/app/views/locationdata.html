@@ -1,6 +1,23 @@
 <section>
-    <!-- let's just start with a list of collected location and acceleration values -->
-    <div>
-        <h3>This will display a list of collected location data.</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <h2 class="text-center">Location Data</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <ul>
+                    {{#foreach: locationData}}
+                    <li>
+                        {{timestamp}}:
+                        Coordinates: {{coords.latitude}}, {{coords.longitude}}<br/>
+                        Altitude: {{coords.altitude}}'<br/>
+                        Heading, speed: {{coords.heading}}, {{coords.speed}}
+                    </li>
+                    {{/foreach}}
+                </ul>
+            </div>
+        </div>
     </div>
 </section>

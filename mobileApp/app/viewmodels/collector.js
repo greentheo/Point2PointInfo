@@ -1,19 +1,100 @@
-﻿define([], function() {
-    return {
+﻿define(['js/appdata', 'plugins/observable'], function(appData, observables) {
+    var vm = {
         userName: '',
+        interval: 3000,
         buttonCaption: 'Start',
+        collectionHandle: null,
+        accelerometerHandle: null,
+        locationEntryCount: 0,
+        locationErrorCount: 0,
+        accelerometerEntryCount: 0,
+        accelerometerErrorCount: 0,
+        collectionInProgress: false,
         toggleCollection: function() {
             var toggle = { Start: 'End', End: 'Start' };
             var command = this.buttonCaption;
             this.buttonCaption = toggle[this.buttonCaption];
 
             if (command === 'Start') {
-                // start subscribing
-                console.log('Collection started!');
+                this.startCollection.apply(this);
             } else {
-                // stop
-                console.log('Collection stopped!');
+                this.endCollection.apply(this);
             }
+        },
+        startCollection: function() {
+            var that = this;
+            that.collectionInProgress = true;
+            that.collectionHandle = navigator.geolocation.watchPosition(
+                function(position) {    // success!
+                    // add the info to appdata
+                    appData.locationData.push(position);
+                    that.locationEntryCount = appData.locationData.length;
+                    /* position is a Position object:
+                    {
+                        timestamp: Date,
+                        coords: {    (Coordinates object)
+                            latitude: Number,
+                            longitude: Number,
+                            altitude: Number,
+                            accuracy: Number, (of latitude and longitude in meters) - Android not supported
+                            altitudeAccuracy: Number,
+                            heading: Number (degrees clockwise relative to true north)
+                            speed: Number (meters per second)
+                        }
+                    }
+                    */
+                },
+                function(error) {       // error!
+                    appData.locationErrors.push(error);
+                    that.locationErrorCount = appData.locationErrors.length;
+                    /* error is a PositionError object:
+                    {
+                        code: Number, (PositionError.PERMISSION_DENIED, PositionError.POSITION_UNAVAILABLE, PositionError.TIMEOUT)
+                        message: String
+                    }
+                     */
+                }, {                    // options
+                    maximumAge: that.interval,
+                    enableHighAccuracy: true
+                });
+
+            that.accelerometerHandle = navigator.accelerometer.watchAcceleration(
+                function(acceleration) {    // success!
+                    // add the info to appdata
+                    appData.accelerometerData.push(acceleration);
+                    that.accelerometerEntryCount = appData.accelerometerData.length;
+                    /* acceleration is an Acceleration object:
+                    {
+                        timestamp: Date,
+                        x: Number,
+                        y: Number,
+                        z: Number
+                    }
+                    */
+                },
+                function() {       // error!
+                    appData.accelerometerErrors.push({ timestamp: new Date() });
+                    that.accelerometerErrorCount = appData.accelerometerErrors.length;
+                }, {                    // options
+                    frequency: that.interval
+                });
+        },
+        endCollection: function() {
+            var that = this;
+            that.collectionInProgress = false;
+            if (that.collectionHandle == null) return;
+
+            navigator.geolocation.clearWatch(that.collectionHandle);
+            that.collectionHandle = null;
+
+            navigator.accelerometer.clearWatch(that.accelerometerHandle);
+            that.accelerometerHandle = null;
         }
     };
+
+    observables.defineProperty(vm, 'canCollect', function() {
+        return this.userName != '' && this.interval > 0;
+    });
+
+    return vm;
 });

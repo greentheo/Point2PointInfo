@@ -1,5 +1,35 @@
 module.exports = function(grunt) {
 
+    var copySrcFiles = [
+        // just copy them all!
+        '**',
+
+        // ...except the following file types
+        '!**/*.js',
+        '!**/*.min.css',
+        '!**/*.map',
+
+        // ...and these directories
+        '!**/js',
+        '!**/viewmodels'
+    ];
+
+    var copyProcessFile = function (content, srcpath, built) {
+        if (srcpath == 'app/index.html') {
+            var processedContent = content.replace('"../lib/require/require.js"', '"main.js"');
+
+            if (built) {
+                processedContent = processedContent
+                    .replace('<!--cordova-->', '<script type="text/javascript" src="cordova.js"></script>')
+                    .replace('<!--cordovaplugins-->', '<script type="text/javascript" src="cordova_plugins.js"></script>');
+            }
+
+            return processedContent;
+        }
+
+        return content;
+    };
+
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -32,43 +62,31 @@ module.exports = function(grunt) {
         copy: {
             dev: {
                 files: [
-                    {   // everything but js, since we'll deal with that separately
+                    {
                         expand: true,
                         cwd: 'app/',
-                        src: [ '**', '!**/*.js', '!**/js', '!**/viewmodels'],
+                        src: copySrcFiles,
                         dest: 'dev/'
                     }
                 ],
                 options: {
                     process: function (content, srcpath) {
-                        if (srcpath == 'app/index.html') {
-                            console.log('replacing index text');
-                            // reference the built version
-                            return content.replace('"../lib/require/require.js"', '"main.js"')
-                        }
-
-                        return content;
+                        return copyProcessFile(content, srcpath);
                     }
                 }
             },
             prod: {
                 files: [
-                    {   // everything but js, since we'll deal with that separately
+                    {
                         expand: true,
                         cwd: 'app/',
-                        src: [ '**', '!**/*.js', '!**/js', '!**/viewmodels'],
+                        src: copySrcFiles,
                         dest: 'www/'
                     }
                 ],
                 options: {
                     process: function (content, srcpath) {
-                        if (srcpath == 'app/index.html') {
-                            console.log('replacing index text');
-                            // reference the built version
-                            return content.replace('"../lib/require/require.js"', '"main.js"')
-                        }
-
-                        return content;
+                        return copyProcessFile(content, srcpath, true);
                     }
                 }
             }
@@ -81,20 +99,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
 
-    // Default task(s).
-    //grunt.registerTask('default', ['durandaljs']);
-
     grunt.registerTask('default', [
-        'clean:dev',
-        'copy:dev',
-        'durandaljs:dev'
-
-    ]);
-
-    grunt.registerTask('build', [
         'clean:prod',
         'copy:prod',
         'durandaljs:prod'
+    ]);
+
+    grunt.registerTask('dev', [
+        'clean:dev',
+        'copy:dev',
+        'durandaljs:dev'
     ]);
 
 };

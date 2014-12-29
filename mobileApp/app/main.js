@@ -23,13 +23,14 @@ define([
     'durandal/viewLocator',
     'js/deviceevents',
     'knockout',
-    'bootstrap',
+    'jquery',
 
     // req'd but not directly referenced
+    'bootstrap',
     'knockoutpunches',
     'js/punchesfilters'
 ],
-function (system, app, viewLocator, deviceEvents, ko) {
+function (system, app, viewLocator, deviceEvents, ko, $) {
     //>>excludeStart("build", true);
     system.debug(true);
     //>>excludeEnd("build");
