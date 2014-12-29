@@ -4,6 +4,8 @@
         interval: 3000,
         buttonCaption: 'Start',
         collectionHandle: null,
+        collectionStart: null,
+        collectionEnd: null,
         accelerometerHandle: null,
         locationEntryCount: 0,
         locationErrorCount: 0,
@@ -24,8 +26,11 @@
         startCollection: function() {
             var that = this;
             that.collectionInProgress = true;
+
+            // geolocation
             that.collectionHandle = navigator.geolocation.watchPosition(
                 function(position) {    // success!
+
                     // add the info to appdata
                     appData.locationData.push(position);
                     that.locationEntryCount = appData.locationData.length;
@@ -58,6 +63,7 @@
                     enableHighAccuracy: true
                 });
 
+            // accelerometer
             that.accelerometerHandle = navigator.accelerometer.watchAcceleration(
                 function(acceleration) {    // success!
                     // add the info to appdata
@@ -92,6 +98,8 @@
         }
     };
 
+    // note: one disadvantage of using the observable plugin is that the syntax for creating
+    //      what would normally be a ko computed function is a little ... um ... different
     observables.defineProperty(vm, 'canCollect', function() {
         return this.userName != '' && this.interval > 0;
     });
