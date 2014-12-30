@@ -20,27 +20,29 @@
                         <h3>Collecting...</h3>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-6 col-sm-6"><h3>Location</h3></div>
-                    <div class="col-xs-6 col-sm-6"><h3>Acceleration</h3></div>
-                </div>
-                <div class="row" data-bind="visible: locationUnsupported() || accelerationUnsupported()">
-                    <div class="col-xs-6 col-sm-6" data-bind="visible: locationUnsupported"><p class="bg-warning">Not supported</p></div>
-                    <div class="col-xs-6 col-sm-6" data-bind="visible: accelerationUnsupported"><p class="bg-warning">Not supported</p></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-4 col-sm-4" data-bind="visible: !locationUnsupported()">Entries:</div>
-                    <div class="col-xs-2 col-sm-2" data-bind="visible: !locationUnsupported()">{{locationEntryCount}}</div>
-                    <div class="col-xs-4 col-sm-4" data-bind="visible: !accelerationUnsupported()">Entries:</div>
-                    <div class="col-xs-2 col-sm-2" data-bind="visible: !accelerationUnsupported()">{{accelerationEntryCount}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-4 col-sm-4" data-bind="visible: !locationUnsupported()">Errors:</div>
-                    <div class="col-xs-2 col-sm-2" data-bind="visible: !locationUnsupported()">{{locationErrorCount}}</div>
-                    <div class="col-xs-4 col-sm-4" data-bind="visible: !accelerationUnsupported()">Errors:</div>
-                    <div class="col-xs-2 col-sm-2" data-bind="visible: !accelerationUnsupported()">{{accelerationErrorCount}}</div>
-                </div>
             </div>
+
+            <div class="row">
+                <div class="col-xs-6 col-sm-6"><h3>Location</h3></div>
+                <div class="col-xs-6 col-sm-6"><h3>Acceleration</h3></div>
+            </div>
+            <div class="row" data-bind="visible: oneOrMoreUnsupported">
+                <div class="col-xs-6 col-sm-6" data-bind="visible: locationUnsupported"><p class="bg-warning">Not supported</p></div>
+                <div class="col-xs-6 col-sm-6" data-bind="visible: accelerationUnsupported"><p class="bg-warning">Not supported</p></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 col-sm-4" data-bind="visible: locationSupported">Entries:</div>
+                <div class="col-xs-2 col-sm-2" data-bind="visible: locationSupported">{{locationEntryCount}}</div>
+                <div class="col-xs-4 col-sm-4" data-bind="visible: accelerationSupported">Entries:</div>
+                <div class="col-xs-2 col-sm-2" data-bind="visible: accelerationSupported">{{accelerometerEntryCount}}</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 col-sm-4" data-bind="visible: locationSupported">Errors:</div>
+                <div class="col-xs-2 col-sm-2" data-bind="visible: locationSupported">{{locationErrorCount}}</div>
+                <div class="col-xs-4 col-sm-4" data-bind="visible: accelerationSupported">Errors:</div>
+                <div class="col-xs-2 col-sm-2" data-bind="visible: accelerationSupported">{{accelerometerErrorCount}}</div>
+            </div>
+
         </div>
     </div>
 </section>

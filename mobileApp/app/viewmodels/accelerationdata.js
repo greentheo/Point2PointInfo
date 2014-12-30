@@ -1,9 +1,9 @@
 define(['js/appdata'], function(appData) {
     return {
-        accelerationData: appData.accelerationData,
+        accelerometerData: appData.accelerometerData,
         clearData: function() {
-            while(appData.accelerationData.length) {
-                appData.accelerationData.pop();
+            while(appData.accelerometerData.length) {
+                appData.accelerometerData.pop();
             }
         }
    };

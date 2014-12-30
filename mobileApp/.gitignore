@@ -41,6 +41,7 @@ phonegap/.cordova/config.json
 .Trashes
 ehthumbs.db
 Thumbs.db
+.com.apple.timemachine.supported
 
 # Node.js specific
 ##################

@@ -36,55 +36,57 @@ function(app, appData, deviceAcceleration, deviceLocation, observables) {
             // geolocation
 
             deviceLocation.start();
-            app.on('location.start').then(function() {
-                // TODO: do we need this?
-            });
 
             app.on('location.capture').then(function(data) {
                 that.locationEntryCount = appData.locationData.length;
             });
 
             app.on('location.unsupported').then(function() {
-
+                that.locationUnsupported = true;
             });
 
             // acceleration
 
             deviceAcceleration.start();
 
-            app.on('acceleration.start').then(function() {
-                // TODO: do we need this?
-            });
-
             app.on('acceleration.capture').then(function(data) {
-                that.locationEntryCount = appData.accelerationData.length;
+                that.accelerometerEntryCount = appData.accelerometerData.length;
             });
 
             app.on('acceleration.unsupported').then(function() {
-
+                that.accelerationUnsupported = true;
             });
 
         },
         endCollection: function() {
             var that = this;
-            that.collectionInProgress = false;
 
             deviceLocation.end();
-            app.on('location.end').then(function() {
-
-            });
-
             deviceAcceleration.end();
-            app.on('acceleration.end').then(function() {
 
-            });
+            that.collectionInProgress = false;
+            that.locationUnsupported = false;
+            that.accelerationUnsupported = false;
         }
     };
 
     // note: one disadvantage of using the observable plugin is that the syntax for creating
     //      what would normally be a ko computed function is a little ... um ... different
+
     observables.defineProperty(vm, 'canCollect', function() {
         return this.userName != '';
+    });
+
+    observables.defineProperty(vm, 'oneOrMoreUnsupported', function() {
+       return this.locationUnsupported || this.accelerationUnsupported;
+    });
+
+    observables.defineProperty(vm, 'locationSupported', function() {
+        return !this.locationUnsupported;
+    });
+
+    observables.defineProperty(vm, 'accelerationSupported', function() {
+        return !this.accelerationUnsupported;
     });
 
     return vm;
