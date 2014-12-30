@@ -17,9 +17,12 @@ define(['durandal/app', 'js/appdata', 'js/deviceevents'], function(app, appData,
         },
         end: function() {
             var that = this;
+            if (that.handle !== null) {
+                if (that.isDevice) that._deviceEnd();
+                else that._mobileWebEnd();
+            }
 
-            if (that.isDevice) that._deviceEnd();
-            else that._mobileWebEnd();
+            app.trigger('acceleration.end');
         },
         handle: null,
         _deviceStart: function() {

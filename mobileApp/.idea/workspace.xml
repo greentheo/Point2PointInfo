@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="af099719-b0ce-49d9-ab1e-ab1e3de8bfe9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/collector.html" afterPath="$PROJECT_DIR$/app/views/collector.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/viewmodels/collector.js" afterPath="$PROJECT_DIR$/app/viewmodels/collector.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/deviceacceleration.js" afterPath="$PROJECT_DIR$/app/js/deviceacceleration.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/devicelocation.js" afterPath="$PROJECT_DIR$/app/js/devicelocation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mobileApp.iws" />
@@ -27,68 +28,86 @@
     <favorites_list name="mobileApp" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.791666" vertical-offset="509" max-vertical-offset="1110">
-              <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collector.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/viewmodels/collector.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4962593" vertical-offset="0" max-vertical-offset="1425">
-              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="accelerationdata.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/accelerationdata.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="390">
-              <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deviceacceleration.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/js/deviceacceleration.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1425">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="appdata.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/js/appdata.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-              <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collector.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/collector.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="600">
-              <caret line="13" column="130" selection-start-line="13" selection-start-column="130" selection-end-line="13" selection-end-column="130" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="vertical" split-proportion="0.6096386">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-18.791666" vertical-offset="509" max-vertical-offset="1110">
+                  <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="collector.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/viewmodels/collector.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1455">
+                  <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="accelerationdata.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/views/accelerationdata.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="390">
+                  <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="deviceacceleration.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/js/deviceacceleration.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.754717" vertical-offset="0" max-vertical-offset="1470">
+                  <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="devicelocation.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/js/devicelocation.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="813" max-vertical-offset="1320">
+                  <caret line="76" column="13" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="appdata.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/js/appdata.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+                  <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="collector.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/views/collector.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.48301888" vertical-offset="262" max-vertical-offset="780">
+                  <caret line="26" column="105" selection-start-line="26" selection-start-column="105" selection-end-line="26" selection-end-column="105" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -120,10 +139,10 @@
         <option value="$PROJECT_DIR$/app/views/accelerationdata.html" />
         <option value="$PROJECT_DIR$/app/viewmodels/shell.js" />
         <option value="$PROJECT_DIR$/app/js/deviceevents.js" />
+        <option value="$PROJECT_DIR$/app/viewmodels/collector.js" />
+        <option value="$PROJECT_DIR$/app/views/collector.html" />
         <option value="$PROJECT_DIR$/app/js/deviceacceleration.js" />
         <option value="$PROJECT_DIR$/app/js/devicelocation.js" />
-        <option value="$PROJECT_DIR$/app/views/collector.html" />
-        <option value="$PROJECT_DIR$/app/viewmodels/collector.js" />
       </list>
     </option>
   </component>
@@ -404,7 +423,19 @@
       <option name="project" value="LOCAL" />
       <updated>1419969295793</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="tweaks">
+      <created>1419969555791</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1419969555791</updated>
+    </task>
+    <task id="LOCAL-00006" summary="collector UI refinements and tweaks">
+      <created>1419977093064</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1419977093064</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -475,7 +506,9 @@
     <MESSAGE value="continuing to try and get Grunt tasks working.  For the most part, things seem to be okay now." />
     <MESSAGE value="addition of location and acceleration collection" />
     <MESSAGE value="organization of code, and addition of acceleration logic that should work in either a device app or a mobile browser." />
-    <option name="LAST_COMMIT_MESSAGE" value="organization of code, and addition of acceleration logic that should work in either a device app or a mobile browser." />
+    <MESSAGE value="tweaks" />
+    <MESSAGE value="collector UI refinements and tweaks" />
+    <option name="LAST_COMMIT_MESSAGE" value="collector UI refinements and tweaks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -825,22 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/devicelocation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.066929" vertical-offset="750" max-vertical-offset="1290">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/deviceacceleration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1425">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/appdata.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
@@ -867,16 +884,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/collector.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="600">
-          <caret line="13" column="130" selection-start-line="13" selection-start-column="130" selection-end-line="13" selection-end-column="130" />
+        <state vertical-scroll-proportion="0.48301888" vertical-offset="262" max-vertical-offset="780">
+          <caret line="26" column="105" selection-start-line="26" selection-start-column="105" selection-end-line="26" selection-end-column="105" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/viewmodels/collector.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4962593" vertical-offset="0" max-vertical-offset="1425">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1455">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/devicelocation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="813" max-vertical-offset="1320">
+          <caret line="76" column="13" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/deviceacceleration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.754717" vertical-offset="0" max-vertical-offset="1470">
+          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
           <folding />
         </state>
       </provider>

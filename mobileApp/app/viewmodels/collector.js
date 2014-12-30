@@ -13,8 +13,10 @@ function(app, appData, deviceAcceleration, deviceLocation, observables) {
         collectionEnd: null,
         locationEntryCount: 0,
         locationErrorCount: 0,
+        locationUnsupported: false,
         accelerometerEntryCount: 0,
         accelerometerErrorCount: 0,
+        accelerationUnsupported: false,
         collectionInProgress: false,
         toggleCollection: function() {
             var toggle = { Start: 'End', End: 'Start' };
