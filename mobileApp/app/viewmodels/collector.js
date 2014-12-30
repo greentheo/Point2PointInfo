@@ -1,4 +1,11 @@
-﻿define(['js/appdata', 'plugins/observable'], function(appData, observables) {
+﻿define([
+        'durandal/app',
+        'js/appdata',
+        'js/deviceacceleration',
+        'js/devicelocation',
+        'plugins/observable'
+    ],
+function(app, appData, deviceAcceleration, deviceLocation, observables) {
     var vm = {
         userName: '',
         interval: 3000,
@@ -28,73 +35,50 @@
             that.collectionInProgress = true;
 
             // geolocation
-            that.collectionHandle = navigator.geolocation.watchPosition(
-                function(position) {    // success!
 
-                    // add the info to appdata
-                    appData.locationData.push(position);
-                    that.locationEntryCount = appData.locationData.length;
-                    /* position is a Position object:
-                    {
-                        timestamp: Date,
-                        coords: {    (Coordinates object)
-                            latitude: Number,
-                            longitude: Number,
-                            altitude: Number,
-                            accuracy: Number, (of latitude and longitude in meters) - Android not supported
-                            altitudeAccuracy: Number,
-                            heading: Number (degrees clockwise relative to true north)
-                            speed: Number (meters per second)
-                        }
-                    }
-                    */
-                },
-                function(error) {       // error!
-                    appData.locationErrors.push(error);
-                    that.locationErrorCount = appData.locationErrors.length;
-                    /* error is a PositionError object:
-                    {
-                        code: Number, (PositionError.PERMISSION_DENIED, PositionError.POSITION_UNAVAILABLE, PositionError.TIMEOUT)
-                        message: String
-                    }
-                     */
-                }, {                    // options
-                    maximumAge: that.interval,
-                    enableHighAccuracy: true
-                });
+            deviceLocation.start();
+            app.on('location.start').then(function() {
 
-            // accelerometer
-            that.accelerometerHandle = navigator.accelerometer.watchAcceleration(
-                function(acceleration) {    // success!
-                    // add the info to appdata
-                    appData.accelerometerData.push(acceleration);
-                    that.accelerometerEntryCount = appData.accelerometerData.length;
-                    /* acceleration is an Acceleration object:
-                    {
-                        timestamp: Date,
-                        x: Number,
-                        y: Number,
-                        z: Number
-                    }
-                    */
-                },
-                function() {       // error!
-                    appData.accelerometerErrors.push({ timestamp: new Date() });
-                    that.accelerometerErrorCount = appData.accelerometerErrors.length;
-                }, {                    // options
-                    frequency: that.interval
-                });
+            });
+
+            app.on('location.capture').then(function(data) {
+
+            });
+
+            app.on('location.unsupported').then(function() {
+
+            });
+
+
+            // acceleration
+            deviceAcceleration.start();
+
+            app.on('acceleration.start').then(function() {
+
+            });
+
+            app.on('acceleration.capture').then(function(data) {
+
+            });
+
+            app.on('acceleration.unsupported').then(function() {
+
+            });
+
         },
         endCollection: function() {
             var that = this;
             that.collectionInProgress = false;
-            if (that.collectionHandle == null) return;
 
-            navigator.geolocation.clearWatch(that.collectionHandle);
-            that.collectionHandle = null;
+            deviceLocation.end();
+            app.on('location.end').then(function() {
 
-            navigator.accelerometer.clearWatch(that.accelerometerHandle);
-            that.accelerometerHandle = null;
+            });
+
+            deviceAcceleration.end();
+            app.on('acceleration.end').then(function() {
+
+            });
         }
     };
 

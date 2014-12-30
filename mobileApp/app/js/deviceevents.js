@@ -8,10 +8,15 @@ define(['durandal/app'], function(app) {
 
         // We'll publish these as durandal events
         bindEvents: function() {
-            document.addEventListener('deviceready', this.onDeviceReady, false);
 
-            // shim the deviceready event so our app will work for browser testing
-            if (!this.isDevice()) setTimeout(this.onDeviceReady(), 100);
+            //device ready
+            if (this.isDevice()) {
+                document.addEventListener('deviceready', this.onDeviceReady, false);
+            } else {
+                // shim the deviceready event for mobile browsers
+                setTimeout(this.onDeviceReady(), 100);
+            }
+
         },
 
         onDeviceReady: function() {
@@ -19,7 +24,7 @@ define(['durandal/app'], function(app) {
         },
 
         isDevice: function() {
-            return document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+            return document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
         }
     };
 });
