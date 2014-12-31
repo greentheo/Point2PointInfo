@@ -77,16 +77,12 @@ define(['durandal/app', 'js/appdata', 'js/deviceevents'], function(app, appData,
             that.handle = null;
         },
         _mobileWebEvent: function(acceleration) {
-            var data = {
-                timestamp: new Date(),
-                x: acceleration.x,
-                y: acceleration.y,
-                z: acceleration.z
-            };
 
-            appData.accelerometerData.push(data);
+            acceleration.timestamp = new Date();
 
-            app.trigger('acceleration.capture', data);
+            appData.accelerometerData.push(acceleration);
+
+            app.trigger('acceleration.capture', acceleration);
         }
     }
 });

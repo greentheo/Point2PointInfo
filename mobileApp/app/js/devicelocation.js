@@ -72,7 +72,7 @@ define(['durandal/app', 'js/appdata', 'js/deviceevents'], function(app, appData,
             var that = this;
 
             if (that.handle !== null) {
-                navigator.geolocation.clearWatch(that.collectionHandle);
+                navigator.geolocation.clearWatch(that.handle);
                 that.handle = null;
             }
 
