@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         // ...except the following file types
         '!**/*.js',
         '!**/*.min.css',
-        '!**/*.map',
+        //'!**/*.map',
 
         // ...and these directories
         '!**/js',
