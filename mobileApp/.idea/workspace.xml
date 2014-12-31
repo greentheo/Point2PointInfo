@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af099719-b0ce-49d9-ab1e-ab1e3de8bfe9" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/accelerationdata.html" afterPath="$PROJECT_DIR$/app/views/accelerationdata.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/deviceacceleration.js" afterPath="$PROJECT_DIR$/app/js/deviceacceleration.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/devicelocation.js" afterPath="$PROJECT_DIR$/app/js/devicelocation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mobileApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,11 +47,31 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="accelerationdata.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/viewmodels/accelerationdata.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="accelerationdata.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/accelerationdata.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="390">
-              <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+            <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="390">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shell.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/viewmodels/shell.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -61,8 +80,8 @@
       <file leaf-file-name="deviceacceleration.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/js/deviceacceleration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7927461" vertical-offset="801" max-vertical-offset="1410">
-              <caret line="84" column="61" selection-start-line="84" selection-start-column="61" selection-end-line="84" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.6373057" vertical-offset="801" max-vertical-offset="1485">
+              <caret line="78" column="47" selection-start-line="78" selection-start-column="47" selection-end-line="78" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -81,7 +100,7 @@
       <file leaf-file-name="appdata.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/appdata.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="270">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
               <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
               <folding />
             </state>
@@ -117,13 +136,13 @@
         <option value="$PROJECT_DIR$/app/js/appdata.js" />
         <option value="$PROJECT_DIR$/app/viewmodels/shell.js" />
         <option value="$PROJECT_DIR$/app/js/deviceevents.js" />
-        <option value="$PROJECT_DIR$/app/views/accelerationdata.html" />
         <option value="$PROJECT_DIR$/app/viewmodels/collector.js" />
         <option value="$PROJECT_DIR$/app/viewmodels/accelerationdata.js" />
         <option value="$PROJECT_DIR$/app/views/collector.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/app/js/devicelocation.js" />
+        <option value="$PROJECT_DIR$/app/views/accelerationdata.html" />
         <option value="$PROJECT_DIR$/app/js/deviceacceleration.js" />
       </list>
     </option>
@@ -769,13 +788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/viewmodels/shell.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.85714287" vertical-offset="0" max-vertical-offset="300">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37037036" vertical-offset="390" max-vertical-offset="1200">
@@ -805,22 +817,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/appdata.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/accelerationdata.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="390">
-          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.55851066" vertical-offset="0" max-vertical-offset="1800">
@@ -845,14 +841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/viewmodels/accelerationdata.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25906736" vertical-offset="0" max-vertical-offset="579">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/devicelocation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="741" max-vertical-offset="1320">
@@ -869,10 +857,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/appdata.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/viewmodels/shell.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/viewmodels/accelerationdata.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/accelerationdata.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="390">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/deviceacceleration.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7927461" vertical-offset="801" max-vertical-offset="1410">
-          <caret line="84" column="61" selection-start-line="84" selection-start-column="61" selection-end-line="84" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.6373057" vertical-offset="801" max-vertical-offset="1485">
+          <caret line="78" column="47" selection-start-line="78" selection-start-column="47" selection-end-line="78" selection-end-column="47" />
           <folding />
         </state>
       </provider>
