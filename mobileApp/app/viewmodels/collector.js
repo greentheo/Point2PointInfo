@@ -3,11 +3,9 @@
         'js/appdata',
         'js/deviceacceleration',
         'js/devicelocation',
-        'plugins/observable',
-        'js/utils',
-        'jquery'
+        'plugins/observable'
     ],
-function(app, appData, deviceAcceleration, deviceLocation, observables, utils, $) {
+function(app, appData, deviceAcceleration, deviceLocation, observables) {
     var vm = {
         userName: '',
         buttonCaption: 'Start',
