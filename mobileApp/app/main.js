@@ -35,7 +35,7 @@ function (system, app, viewLocator, deviceEvents, ko, $) {
     system.debug(true);
     //>>excludeEnd("build");
 
-    app.title = 'Point 2 Point Location Collector';
+    app.title = 'Royalty Analytics';
 
     app.configurePlugins({
         router: true,
@@ -71,4 +71,6 @@ function (system, app, viewLocator, deviceEvents, ko, $) {
             $(this).collapse('hide');
         }
     });
+
+
 });

@@ -3,9 +3,20 @@ define(['durandal/app', 'js/appdata', 'js/deviceevents'], function(app, appData,
     // Handles acceleration events and data capture.  Since acceleration is captured differently on a device vs.
     //  mobile browser, this encapsulates either approach.
 
-    // Events:  acceleration.capture, acceleration.start, acceleration.end, acceleration.unsupported
+    // Events:
+    // - acceleration.capture (data)
+    // - acceleration.error
+    // - acceleration.start
+    // - acceleration.end
+    // - acceleration.unsupported
 
     return {
+        dummyData: {
+            timestamp: null,
+            x: null,
+            y: null,
+            z: null
+        },
         isDevice: deviceEvents.isDevice(),
         start: function() {
             var that = this;
@@ -31,8 +42,6 @@ define(['durandal/app', 'js/appdata', 'js/deviceevents'], function(app, appData,
 
                 // success!
                 function(acceleration) {
-                    // add the info to appdata
-                    appData.accelerometerData.push(acceleration);
 
                     /* acceleration is an Acceleration object:
                      {
@@ -43,12 +52,12 @@ define(['durandal/app', 'js/appdata', 'js/deviceevents'], function(app, appData,
                      }
                      */
 
-                    app.trigger('acceleration.capture');
+                    app.trigger('acceleration.capture', acceleration);
                 },
 
                 // error!
                 function() {
-                    appData.accelerometerErrors.push({ timestamp: new Date() });
+                    app.trigger('acceleration.error', { timestamp: new Date() });
                 });
         },
         _deviceEnd: function() {
@@ -61,7 +70,6 @@ define(['durandal/app', 'js/appdata', 'js/deviceevents'], function(app, appData,
 
             if (!window.DeviceMotionEvent) {
                 that.handle = null;
-
                 app.trigger('acceleration.unsupported');
                 return;
             }
@@ -73,7 +81,6 @@ define(['durandal/app', 'js/appdata', 'js/deviceevents'], function(app, appData,
         _mobileWebEnd: function() {
             var that = this;
             window.removeEventListener('devicemotion', that._mobileWebEvent, false);
-
             that.handle = null;
         },
         _mobileWebEvent: function(accelEvent) {
@@ -84,8 +91,6 @@ define(['durandal/app', 'js/appdata', 'js/deviceevents'], function(app, appData,
                 z: accelEvent.acceleration.z,
                 timestamp: new Date()
             }
-
-            appData.accelerometerData.push(data);
 
             app.trigger('acceleration.capture', data);
         }

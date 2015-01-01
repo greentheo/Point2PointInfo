@@ -1,13 +1,32 @@
 define(['durandal/app', 'js/appdata', 'js/deviceevents'], function(app, appData, deviceEvents) {
 
-    // Handles geolocation events and data capture.
+    // Encapsulates capturing geolocation events.
 
-    // Events: location.capture, location.error, location.start, location.end, location.unsupported
+    // Events:
+    // - location.capture (data)
+    // - location.error (data)
+    // - location.start
+    // - location.end
+    // - location.unsupported
+
+    var FEET = 3.28084;
 
     return {
+        dummyData: {
+            timestamp: null,
+            coords: {
+                latitude: null,
+                longitude: null,
+                altitude: null,
+                accuracy: null,
+                altitudeAccuracy: null,
+                heading: null,
+                speed: null
+            }
+        },
         isDevice: deviceEvents.isDevice(),
         handle: null,
-        start: function () {
+        start: function (useMeters) {
             var that = this;
 
             if (!navigator.geolocation) {
@@ -35,13 +54,12 @@ define(['durandal/app', 'js/appdata', 'js/deviceevents'], function(app, appData,
                      */
 
                     // adjust collected info
-                    var feet = 3.28084;
                     position.timestamp = new Date(position.timestamp);
-                    if (position.coords.altitude &&!isNaN(position.coords.altitude)) position.coords.altitude = position.coords.altitude * feet;
-                    if (position.coords.speed &&!isNaN(position.coords.speed)) position.coords.speed = position.coords.speed * feet;
 
-                    // add the info to appdata
-                    appData.locationData.push(position);
+                    if (!useMeters) {
+                        if (position.coords.altitude) position.coords.altitude = position.coords.altitude * FEET;
+                        if (position.coords.speed) position.coords.speed = position.coords.speed * FEET;
+                    }
 
                     app.trigger('location.capture', position);
                 },
@@ -55,10 +73,7 @@ define(['durandal/app', 'js/appdata', 'js/deviceevents'], function(app, appData,
                     }
                     */
 
-                    appData.locationErrors.push(error);
-
                     app.trigger('location.error', error);
-
                 },
 
                 // options

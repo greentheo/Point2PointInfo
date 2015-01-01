@@ -3,42 +3,44 @@
         'js/appdata',
         'js/deviceacceleration',
         'js/devicelocation',
-        'plugins/observable'
+        'plugins/observable',
+        'js/utils',
+        'jquery'
     ],
-function(app, appData, deviceAcceleration, deviceLocation, observables) {
+function(app, appData, deviceAcceleration, deviceLocation, observables, utils, $) {
     var vm = {
         userName: '',
         buttonCaption: 'Start',
         collectionStart: null,
         collectionEnd: null,
-        locationEntryCount: 0,
-        locationErrorCount: 0,
+        lastAccelerometer: deviceAcceleration.dummyData,
+        accelerometerData: [],
+        accelerometerErrors: [],
+        lastLocation: deviceLocation.dummyData,
+        locationData: [],
+        locationErrors: [],
         locationUnsupported: false,
-        accelerometerEntryCount: 0,
-        accelerometerErrorCount: 0,
         accelerationUnsupported: false,
         collectionInProgress: false,
         toggleCollection: function() {
+
             var toggle = { Start: 'End', End: 'Start' };
             var command = this.buttonCaption;
             this.buttonCaption = toggle[this.buttonCaption];
 
-            if (command === 'Start') {
-                this.startCollection.apply(this);
-            } else {
-                this.endCollection.apply(this);
-            }
+            this.collectionInProgress = command === 'Start';
+
         },
-        startCollection: function() {
+        startWatching: function() {
             var that = this;
-            that.collectionInProgress = true;
 
             // geolocation
 
             deviceLocation.start();
 
             app.on('location.capture').then(function(data) {
-                that.locationEntryCount = appData.locationData.length;
+                that.lastLocation = data;
+                if (that.collectionInProgress) that.locationData.push(data);
             });
 
             app.on('location.unsupported').then(function() {
@@ -50,7 +52,12 @@ function(app, appData, deviceAcceleration, deviceLocation, observables) {
             deviceAcceleration.start();
 
             app.on('acceleration.capture').then(function(data) {
-                that.accelerometerEntryCount = appData.accelerometerData.length;
+                that.lastAccelerometer = data;
+                if (that.collectionInProgress) that.accelerometerData.push(data);
+            });
+
+            app.on('acceleration.error').then(function(data) {
+                if (that.collectionInProgress) that.accelerometerErrors.push(data);
             });
 
             app.on('acceleration.unsupported').then(function() {
@@ -58,15 +65,31 @@ function(app, appData, deviceAcceleration, deviceLocation, observables) {
             });
 
         },
-        endCollection: function() {
-            var that = this;
-
+        endWatching: function() {
             deviceLocation.end();
             deviceAcceleration.end();
+        },
 
-            that.collectionInProgress = false;
-            that.locationUnsupported = false;
-            that.accelerationUnsupported = false;
+        activate: function() {
+            this.userName = appData.userName;
+            this.locationData = appData.locationData;
+            this.locationErrors = appData.locationErrors;
+            this.accelerometerData = appData.accelerometerData;
+            this.accelerometerErrors = appData.accelerometerErrors;
+
+            this.startWatching.apply(this);
+        },
+
+        deactivate: function() {
+            appData.userName = this.userName;
+
+            // TODO: I don't think we need to do this to the arrays, since they should already be the same reference
+            appData.locationData = this.locationData;
+            appData.locationErrors = this.locationErrors;
+            appData.accelerometerData = this.accelerometerData;
+            appData.accelerometerErrors = this.accelerometerErrors;
+
+            this.endWatching.apply(this);
         }
     };
 
