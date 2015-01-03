@@ -38,7 +38,9 @@ function(app, appData, deviceAcceleration, deviceLocation, observables) {
 
             app.on('location.capture').then(function(data) {
                 that.lastLocation = data;
-                if (that.collectionInProgress) that.locationData.push(data);
+                that.lastLocation.accelerometer = [];
+
+                if (that.collectionInProgress) that.locationData.push(that.lastLocation);
             });
 
             app.on('location.unsupported').then(function() {
@@ -50,8 +52,16 @@ function(app, appData, deviceAcceleration, deviceLocation, observables) {
             deviceAcceleration.start();
 
             app.on('acceleration.capture').then(function(data) {
-                that.lastAccelerometer = data;
+
+                // so we can attribute specific accelerometer stuff to a location, we'll add all
+                // accelerometer data to lastLocation
+                that.lastLocation.accelerometer.push(data);
+
+                // TODO: probably can remove this
+                // flat list of acceleration
                 if (that.collectionInProgress) that.accelerometerData.push(data);
+
+                that.lastAccelerometer = data;
             });
 
             app.on('acceleration.error').then(function(data) {

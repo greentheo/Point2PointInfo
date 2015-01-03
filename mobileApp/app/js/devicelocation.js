@@ -56,6 +56,7 @@ define(['durandal/app', 'js/appdata', 'js/deviceevents'], function(app, appData,
                     // adjust collected info
                     position.timestamp = new Date(position.timestamp);
 
+                    // TODO: conversion to feet doesn't work because the Coordinate object property value can't be changed
                     if (!useMeters) {
                         if (position.coords.altitude) position.coords.altitude = position.coords.altitude * FEET;
                         if (position.coords.speed) position.coords.speed = position.coords.speed * FEET;
