@@ -53,6 +53,9 @@ function(app, appData, deviceAcceleration, deviceLocation, observables) {
 
             app.on('acceleration.capture').then(function(data) {
 
+                if (!that.lastLocation) return;
+                if (!that.lastLocation.accelerometer) return;
+
                 // so we can attribute specific accelerometer stuff to a location, we'll add all
                 // accelerometer data to lastLocation
                 that.lastLocation.accelerometer.push(data);
