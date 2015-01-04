@@ -1,10 +1,20 @@
-define(['js/appdata'], function(appData) {
+define(['plugins/dialog', 'js/appdata'], function(dialog, appData) {
     return {
         locationData: appData.locationData,
-        clearData: function() {
-            while(appData.locationData.length) {
-                appData.locationData.pop();
+        clearLocationData: function() {
+            var that = this;
+            while(that.locationData.length) {
+                that.locationData.pop();
             }
+        },
+        sendLocationData: function() {
+            dialog.showMessage('This feature to be implemented...', 'TODO');
+        },
+        activate: function() {
+            this.locationData = appData.locationData;
+        },
+        deactivate: function() {
+            appData.locationData = this.locationData;
         }
    };
 });

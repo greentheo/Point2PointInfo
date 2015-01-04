@@ -1,3 +1,7 @@
+# Webstorm IDE files #
+######################
+.idea
+
 # Phonegap-cli specific #
 #########################
 platforms
