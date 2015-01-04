@@ -50,21 +50,18 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-4 col-sm-4" data-bind="visible: locationSupported">Entries:</div>
-                <div class="col-xs-2 col-sm-2" data-bind="visible: locationSupported">{{locationData.length}}</div>
-                <div class="col-xs-4 col-sm-4" data-bind="visible: accelerationSupported">Entries:</div>
-                <div class="col-xs-2 col-sm-2" data-bind="visible: accelerationSupported">{{accelerometerData.length}}</div>
+                <div class="col-xs-7 col-sm-7" data-bind="visible: locationSupported">Entries:</div>
+                <div class="col-xs-5 col-sm-5" data-bind="visible: locationSupported">{{locationData.length}}</div>
             </div>
             <div class="row">
-                <div class="col-xs-4 col-sm-4" data-bind="visible: locationSupported">Errors:</div>
-                <div class="col-xs-2 col-sm-2" data-bind="visible: locationSupported">{{locationErrors.length}}</div>
-                <div class="col-xs-4 col-sm-4" data-bind="visible: accelerationSupported">Errors:</div>
-                <div class="col-xs-2 col-sm-2" data-bind="visible: accelerationSupported">{{accelerometerErrors.length}}</div>
+                <div class="col-xs-7 col-sm-7" data-bind="visible: locationSupported">Errors:</div>
+                <div class="col-xs-5 col-sm-5" data-bind="visible: locationSupported">{{locationErrors.length}}</div>
             </div>
 
             <div data-bind="visible: collectionInProgress">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 pull-left">
+                        <br />
                         <div class="alert alert-info" role="alert">Collecting...</div>
                     </div>
                 </div>
