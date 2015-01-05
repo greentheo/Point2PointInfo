@@ -3,9 +3,10 @@ define(['plugins/dialog', 'js/appdata'], function(dialog, appData) {
         locationData: appData.locationData,
         clearLocationData: function() {
             var that = this;
-            while(that.locationData.length) {
-                that.locationData.pop();
-            }
+            that.locationData = [];
+            //while(that.locationData.length) {
+            //    that.locationData.pop();
+            //}
         },
         sendLocationData: function() {
             dialog.showMessage('This feature to be implemented...', 'TODO');
