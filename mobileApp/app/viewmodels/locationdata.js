@@ -1,5 +1,5 @@
-define(['plugins/dialog', 'js/appdata'], function(dialog, appData) {
-    return {
+define(['plugins/dialog', 'js/appdata', 'plugins/observable'], function(dialog, appData, observables) {
+    var vm = {
         locationData: appData.locationData,
         clearLocationData: function() {
             var that = this;
@@ -18,4 +18,10 @@ define(['plugins/dialog', 'js/appdata'], function(dialog, appData) {
             appData.locationData = this.locationData;
         }
    };
+
+    observables.defineProperty(vm, 'canSendData', function() {
+        return this.locationData.length;
+    });
+
+    return vm;
 });
