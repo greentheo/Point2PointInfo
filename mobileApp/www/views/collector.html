@@ -9,9 +9,9 @@
             <div class="row">
                 <div class="form-group">
                     <label for="userName">User Name</label>
-                    <input type="text" class="form-control" id="userName" placeholder="Set your user name" value="{{userName}}">
+                    <input type="text" class="form-control" id="userName" placeholder="Set your user name" data-bind="valueUpdate: ['input', 'afterkeydown']" value="{{userName}}">
                 </div>
-                <button class="btn btn-default btn-lg btn-block" data-bind="enable: canCollect, valueUpdate: 'afterkeydown', click: toggleCollection">{{buttonCaption}}</button>
+                <button class="btn btn-default btn-lg btn-block" data-bind="enable: canCollect, click: toggleCollection">{{buttonCaption}}</button>
             </div>
 
             <div class="row">
