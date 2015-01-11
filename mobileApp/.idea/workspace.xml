@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af099719-b0ce-49d9-ab1e-ab1e3de8bfe9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/services/locations.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/schema/locationschema.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/services/users.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/schema/userschema.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/app.js" afterPath="$PROJECT_DIR$/../server/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/package.json" afterPath="$PROJECT_DIR$/../server/package.json" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../server/schema/locationschema.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../server/schema/userschema.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/services/locations.js" afterPath="$PROJECT_DIR$/../server/services/locations.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/services/users.js" afterPath="$PROJECT_DIR$/../server/services/users.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" />
     </list>
@@ -485,7 +483,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43790013" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
