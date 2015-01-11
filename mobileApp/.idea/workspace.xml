@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af099719-b0ce-49d9-ab1e-ab1e3de8bfe9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../server/schema/locationschema.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../server/schema/userschema.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/services/locations.js" afterPath="$PROJECT_DIR$/../server/services/locations.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/services/users.js" afterPath="$PROJECT_DIR$/../server/services/users.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" />
     </list>
     <ignored path="mobileApp.iws" />

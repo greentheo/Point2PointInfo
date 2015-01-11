@@ -1,7 +1,8 @@
-var Mongoose = require("mongoose");
-var db = Mongoose.connect("mongodb://localhost/bottles");
+var config = require('../config');
+var Mongoose = require('mongoose');
+var db = Mongoose.connect(config.dbUri);
 
-var Location = Mongoose.model("Location", {
+var Location = Mongoose.model('Location', {
     userId: { type: Number, required: true },
     location: {
         timestamp: { type: Date, required: true },
