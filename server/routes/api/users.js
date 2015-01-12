@@ -1,9 +1,5 @@
 var userData = require('../../services/users');
 
-exports.list = function(req, res) {
-
-};
-
 exports.login = function(req, res) {
     if (!req.params.login || !req.params.password) {
         res.send('Must provide login and password.');
@@ -30,6 +26,17 @@ exports.login = function(req, res) {
     });
 };
 
-exports.newUser = function(req, res) {
+exports.list = function(req, res) {
+    userData.getUsers(req.params.logins, function(err, users) {
+        if (err) {
+            res.send(err);
+            return;
+        }
 
+        res.json(JSON.stringify(users));
+    });
+};
+
+exports.newUser = function(req, res) {
+    // TODO: only admins can do this.  How to check???
 };
