@@ -1,3 +1,4 @@
+var locationData = require('../../services/locations');
 
 exports.list = function (req, res) {
     // user id is optional
@@ -7,7 +8,7 @@ exports.list = function (req, res) {
     // res.json(JSON.stringify(data));
 };
 
-exports.addLocationData = function(req, res) {
+exports.addLocations = function(req, res) {
     // should be in format:
     /*
     {
@@ -25,7 +26,5 @@ exports.addLocationData = function(req, res) {
         ]
     }
      */
-
-    // TODO: how are we saving this?  File system?  MongoDB?  etc.?
 };
 

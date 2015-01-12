@@ -23,4 +23,10 @@ var Location = Mongoose.model('Location', {
     }
 });
 
-// now what?
+exports.saveUserLocations = function (locations, callback) {
+
+};
+
+exports.getLocationsForUser = function (login, callback) {
+
+} ;

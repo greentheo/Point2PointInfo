@@ -7,6 +7,11 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+// routes through the website and api
+var routes = require('./routes/index');
+var users = require('./routes/users');
+var api = require('./routes/api/collector');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -19,13 +24,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// routes through the website and api
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var collectorapi = require('./routes/api/collector');
-
+// website
 app.use('/', routes);
 app.use('/users', users);
+
+// api
+// app.all('/user/:id/:op?', user.load);  -- might want to look at something like this for authentication
+app.use('/api/users/login')
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
