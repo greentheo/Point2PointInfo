@@ -1,15 +1,56 @@
 var config = require('../config');
-var Mongoose = require('mongoose');
-var db = Mongoose.connect(config.dbUri);
+var bcrypt = require('bcryptjs');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var db = mongoose.connect(config.dbUri);
 
-var User = Mongoose.model('User', {
-    login: { type: String, required: true },
+/*
+Notes:  Making use of suggestion in this article: http://blog.matoski.com/articles/jwt-express-node-mongoose/
+*/
+
+var UserSchema = new Schema({
+    username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     fullName: { type: String, required: true },
     roles: [{ name: { type: String, required: true } }]
+}, {
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true }
 });
 
-var Location = Mongoose.model('Location', {
+UserSchema.pre('save', function (next) {
+    // encrypt the password before saving to db
+    var user = this;
+    if (this.isModified('password') || this.isNew) {
+        bcrypt.genSalt(10, function (err, salt) {
+            if (err) {
+                return next(err);
+            }
+            bcrypt.hash(user.password, salt, function (err, hash) {
+                if (err) {
+                    return next(err);
+                }
+                user.password = hash;
+                next();
+            });
+        });
+    } else {
+        return next();
+    }
+});
+
+UserSchema.methods.comparePassword = function (passw, cb) {
+    bcrypt.compare(passw, this.password, function (err, isMatch) {
+        if (err) {
+            return cb(err);
+        }
+        cb(null, isMatch);
+    });
+};
+
+var User = mongoose.model('User', UserSchema);
+
+var LocationSchema = new Schema({
     user: { type: String, required: true, ref: User },
     location: {
         timestamp: { type: Date, required: true },
@@ -29,6 +70,8 @@ var Location = Mongoose.model('Location', {
         }]
     }
 });
+
+var Location = mongoose.model('Location', LocationSchema);
 
 exports.User = User;
 exports.Location = Location;

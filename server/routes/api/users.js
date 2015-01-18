@@ -1,12 +1,15 @@
 var userData = require('../../services/users');
 
+/*
+Notes: Implementation for the rest api
+ */
 exports.login = function(req, res) {
-    if (!req.params.login || !req.params.password) {
+    if (!req.params.username || !req.params.password) {
         res.send('Must provide login and password.');
         return;
     }
 
-    var id = req.params.login;
+    var id = req.params.username;
     var password = req.params.password;
     var msg = 'Login not found or incorrect password';
 
