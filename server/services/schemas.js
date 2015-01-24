@@ -48,8 +48,6 @@ UserSchema.methods.comparePassword = function (passw, cb) {
     });
 };
 
-var User = mongoose.model('User', UserSchema);
-
 var LocationSchema = new Schema({
     user: { type: String, required: true, ref: User },
     location: {
@@ -71,6 +69,7 @@ var LocationSchema = new Schema({
     }
 });
 
+var User = mongoose.model('User', UserSchema);
 var Location = mongoose.model('Location', LocationSchema);
 
 exports.User = User;

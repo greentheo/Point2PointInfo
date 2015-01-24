@@ -19,6 +19,17 @@ exports.login = function(req, res) {
             return;
         }
 
+        user.comparePassword(password, function(err, isMatch) {
+            if (err) {
+                res.send(err);
+                return;
+            }
+
+            if (!isMatch) {
+                res.send()
+            }
+        });
+
         if (password != user.password) {
             res.send(msg);
             return;
@@ -27,6 +38,10 @@ exports.login = function(req, res) {
         // create a token and send
         // TODO: ***
     });
+};
+
+exports.logout = function(req, res) {
+
 };
 
 exports.list = function(req, res) {

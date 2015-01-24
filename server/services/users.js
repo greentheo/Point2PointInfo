@@ -1,18 +1,18 @@
 var User = require('schemas').User;
 
-exports.getUsers = function(logins, callback) {
-    if (!logins) {  // get 'em all
+exports.getUsers = function(usernames, callback) {
+    if (!usernames) {  // get 'em all
         User.find({}, callback);
     } else {
-        if (!logins.length) {   // find 1 user
-            User.find({ login: logins }, callback);
+        if (!usernames.length) {   // find 1 user
+            User.find({ username: usernames }, callback);
         } else {
-            User.where('login').in(logins).exec(callback);
+            User.where('username').in(usernames).exec(callback);
         }
     }
 };
 
-exports.addUser = function (login, password, fullName, roles, callback) {
+exports.addUser = function (username, password, fullName, roles, callback) {
 
     if (!roles) {
         roles = [ { name: 'User' } ];
@@ -20,14 +20,14 @@ exports.addUser = function (login, password, fullName, roles, callback) {
         if (!(roles instanceof Array)) roles = [ roles ];
     }
 
-    User.findOne({ login: login }, function(err, user) {
+    User.findOne({ username: username }, function(err, user) {
         if (user) {
-            callback(new Error('A user with that login already exists.'));
+            callback(new Error('A user with that username already exists.'));
             return;
         }
 
         var newUser = new User({
-            login: login,
+            username: username,
             password: password,
             fullName: fullName,
             roles: roles
@@ -37,6 +37,6 @@ exports.addUser = function (login, password, fullName, roles, callback) {
     });
 };
 
-exports.deleteUser = function(login, callback) {
-    User.remove({ login: login }, callback);
+exports.deleteUser = function(username, callback) {
+    User.remove({ username: login }, callback);
 };

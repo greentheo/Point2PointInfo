@@ -1,8 +1,6 @@
 var debug = require('debug')('app:routes:default' + process.pid),
     _ = require("lodash"),
-    util = require('util'),
     path = require('path'),
-    bcrypt = require('bcryptjs'),
     utils = require("../utils.js"),
     Router = require("express").Router,
     UnauthorizedAccessError = require(path.join(__dirname, "..", "errors", "UnauthorizedAccessError.js")),
