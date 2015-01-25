@@ -1,42 +1,29 @@
 var userData = require('../../services/users');
+var activeUsers = require('../../services/activeusers');
+var tokenGen = require('../../library/tokengeneration');
 
-/*
-Notes: Implementation for the rest api
- */
 exports.login = function(req, res) {
-    if (!req.params.username || !req.params.password) {
-        res.send('Must provide login and password.');
+    var msg = 'Login not found or incorrect password';
+
+    if (!req.params.username || !req.params.password) {     // TODO: should this be req.body (are we GETting or POSTing?)
+        res.send(msg);
         return;
     }
 
     var id = req.params.username;
     var password = req.params.password;
-    var msg = 'Login not found or incorrect password';
 
     userData.getUsers(id, function(err, user) {
-        if (user == null) {
-            res.send(msg);
-            return;
-        }
+        if (user == null) { res.send(new Error({ message: msg })); return; }
 
         user.comparePassword(password, function(err, isMatch) {
-            if (err) {
-                res.send(err);
-                return;
-            }
+            if (err) { res.send(err); return; }
+            if (!isMatch) { res.send(new Error({ message: msg })); return; }
 
-            if (!isMatch) {
-                res.send()
-            }
+            // generate the token and send it as the response
+            var token = tokenGen.createUserToken(user);
+            res.send(token);
         });
-
-        if (password != user.password) {
-            res.send(msg);
-            return;
-        }
-
-        // create a token and send
-        // TODO: ***
     });
 };
 
@@ -44,8 +31,10 @@ exports.logout = function(req, res) {
 
 };
 
+// TODO: these all need to be restricted to logged in users
+
 exports.list = function(req, res) {
-    userData.getUsers(req.params.logins, function(err, users) {
+    userData.getUsers(req.params.usernames, function(err, users) {
         if (err) {
             res.send(err);
             return;
