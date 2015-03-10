@@ -1,2 +1,3 @@
-Nothing to see here either
-====================
+# sailstest
+
+a [Sails](http://sailsjs.org) application
