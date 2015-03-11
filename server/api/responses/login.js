@@ -3,6 +3,8 @@
  *
  * @param {String} inputs.username
  * @param {String} inputs.password
+ * @param {String} inputs.successRedirect
+ * @param {String} inputs.invalidRedirect
  *
  * @description :: Log the requesting user in using a passport strategy
  * @help        :: See http://links.sailsjs.org/docs/responses

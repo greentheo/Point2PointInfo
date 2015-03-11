@@ -16,24 +16,38 @@
 
 module.exports = {
 
-  /**
-   * `UserController.login()`
-   */
   login: function (req, res) {
 
-    // See `api/responses/login.js`
-    return res.login({
-      username: req.param('username'),
-      password: req.param('password'),
-      successRedirect: '/',
-      invalidRedirect: '/login'
+    User.login({
+      username: inputs.username,
+      password: inputs.password
+    }, function (err, user) {
+      if (err) return res.negotiate(err);
+      if (!user) {
+        // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
+        // send a 200 response letting the user agent know the login was successful.
+        if (req.wantsJSON) {
+          return res.badRequest('Invalid username/password combination.');
+        }
+        // Otherwise if this is an HTML-wanting browser, redirect to /login.
+        return res.redirect('/login');
+      }
+
+      // "Remember" the user in the session
+      // Subsequent requests from this user agent will have `req.session.me` set.
+      req.session.me = user.id;
+
+      // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
+      // send a 200 response letting the user agent know the login was successful.
+      if (req.wantsJSON) {
+        return res.ok();
+      }
+
+      // Otherwise if this is an HTML-wanting browser, redirect to /.
+      return res.redirect('/');
     });
   },
 
-
-  /**
-   * `UserController.logout()`
-   */
   logout: function (req, res) {
 
     // "Forget" the user from the session.
@@ -51,10 +65,6 @@ module.exports = {
     return res.redirect('/');
   },
 
-
-  /**
-   * `UserController.signup()`
-   */
   signup: function (req, res) {
 
     // Attempt to signup a user using the provided parameters

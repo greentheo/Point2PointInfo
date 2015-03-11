@@ -10,13 +10,29 @@ var bcrypt = require('bcrypt');
 module.exports = {
 
   attributes: {
-    username: { type: 'string', required: true },
-    email: { type: 'string', required: true },
+
+    username: {
+      type: 'string',
+      required: true,
+      unique: true
+    },
+
+    email: {
+      type: 'string',
+      required: true
+    },
+
     password: {
       type: 'string',
       required: true,
       minLength: 8,
       columnName: 'encryptedPassword'
+    },
+
+    administrator: {
+      type: 'boolean',
+      required: true,
+      defaultsTo: false
     },
 
     // associations
@@ -34,28 +50,6 @@ module.exports = {
 
   },
 
-  beforeCreate: function(values, cb) {
-
-    // Encrypt password
-    bcrypt.hash(values.password, 10, function(err, hash) {
-      if(err) return cb(err);
-      values.password = hash;
-      //calling cb() with an argument returns an error. Useful for canceling the entire operation if some criteria fails.
-      cb();
-    });
-  },
-
-  /**
-   * Create a new user using the provided inputs,
-   * but encrypt the password first.
-   *
-   * @param  {Object}   inputs
-   *                     • name     {String}
-   *                     • email    {String}
-   *                     • password {String}
-   * @param  {Function} cb
-   */
-
   signup: function (inputs, cb) {
 
     // Create a user
@@ -68,15 +62,6 @@ module.exports = {
 
   },
 
-  /**
-   * Check validness of a login using the provided inputs.
-   * But encrypt the password first.
-   *
-   * @param  {Object}   inputs
-   *                     • email    {String}
-   *                     • password {String}
-   * @param  {Function} cb
-   */
   login: function (inputs, cb) {
 
     // Locate a user
@@ -92,14 +77,26 @@ module.exports = {
         // compare passwords
         user.comparePassword(inputs.password, function(err, match) {
           if (err) return cb(err, null);
-          if (!match) {
-            cb(msg, null);
-          } else {
-            cb(null, user);
-          }
+
+          if (!match) cb(msg, null);
+          else cb(null, user);
         });
 
     });
 
+  },
+
+  // lifecycle functions
+
+  beforeCreate: function(values, cb) {
+
+    // Encrypt password
+    bcrypt.hash(values.password, 10, function(err, hash) {
+      if(err) return cb(err);
+      values.password = hash;
+      //calling cb() with an argument returns an error. Useful for canceling the entire operation if some criteria fails.
+      cb();
+    });
   }
+
 };
