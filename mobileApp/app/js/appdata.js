@@ -1,4 +1,4 @@
-define([], function() {
+define(function() {
     // defines app level data
     return {
         userName: '',
