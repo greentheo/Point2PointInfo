@@ -1,15 +1,26 @@
-define(['plugins/dialog', 'js/appdata', 'plugins/observable'], function(dialog, appData, observables) {
+define([
+    'plugins/dialog',
+    'js/appdata',
+    'plugins/observable',
+    'dataservices/locationdataservice'
+],
+function(dialog, appData, observables, locationService) {
     var vm = {
         locationData: appData.locationData,
+        sendingData: false,
         clearLocationData: function() {
             var that = this;
             that.locationData = [];
-            //while(that.locationData.length) {
-            //    that.locationData.pop();
-            //}
         },
         sendLocationData: function() {
-            dialog.showMessage('This feature to be implemented...', 'TODO');
+            this.sendingData = true;
+
+            locationService.postLocationData(this.locationData, function(response) {
+                this.sendingData = false;
+
+                // TODO: tell the user what happened!
+
+            });
         },
         activate: function() {
             this.locationData = appData.locationData;

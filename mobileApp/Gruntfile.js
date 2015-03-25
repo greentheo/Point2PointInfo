@@ -38,6 +38,7 @@ module.exports = function(grunt) {
                 extraModules: [
                     'plugins/dialog',
                     'plugins/observable',
+                    'plugins/http',
                     'transitions/entrance'
                 ]
             },

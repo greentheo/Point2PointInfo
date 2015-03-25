@@ -1,10 +1,10 @@
 ﻿define([
-        'durandal/app',
-        'js/appdata',
-        'js/deviceacceleration',
-        'js/devicelocation',
-        'plugins/observable'
-    ],
+    'durandal/app',
+    'js/appdata',
+    'js/deviceacceleration',
+    'js/devicelocation',
+    'plugins/observable'
+],
 function(app, appData, deviceAcceleration, deviceLocation, observables) {
     var vm = {
         userName: '',

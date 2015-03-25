@@ -17,10 +17,12 @@
 module.exports = {
 
   login: function (req, res) {
+    var username = req.param('username'),
+        password = req.param('password');
 
     User.login({
-      username: inputs.username,
-      password: inputs.password
+      username: username,
+      password: password
     }, function (err, user) {
       if (err) return res.negotiate(err);
       if (!user) {
@@ -33,14 +35,16 @@ module.exports = {
         return res.redirect('/login');
       }
 
+      // TODO: token AND session??  api login token / website session???
       // "Remember" the user in the session
       // Subsequent requests from this user agent will have `req.session.me` set.
-      req.session.me = user.id;
+      req.session.myToken = sailsTokenAuth.issueToken({ sid: user.id });
+      req.session.me = user;
 
       // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
       // send a 200 response letting the user agent know the login was successful.
       if (req.wantsJSON) {
-        return res.ok();
+        return res.json({ user: user, token: sailsTokenAuth.issueToken({ sid: user.id }) });
       }
 
       // Otherwise if this is an HTML-wanting browser, redirect to /.
@@ -52,6 +56,7 @@ module.exports = {
 
     // "Forget" the user from the session.
     // Subsequent requests from this user agent will NOT have `req.session.me`.
+    req.session.myToken = null;
     req.session.me = null;
 
     // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,

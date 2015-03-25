@@ -7,7 +7,9 @@
         'knockout': '../lib/knockout/knockout-3.1.0',
         'knockoutpunches': '../lib/knockout/knockout.punches',
         'bootstrap': '../lib/bootstrap/js/bootstrap',
-        'jquery': '../lib/jquery/jquery'
+        'jquery': '../lib/jquery/jquery',
+        'dataservices': 'js/dataservices',
+        'services': 'js/services'
     },
     shim: {
         'bootstrap': {
