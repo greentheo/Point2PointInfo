@@ -11,7 +11,7 @@ module.exports = function(req, res, next) {
 
   // User is allowed, proceed to the next policy,
   // or if this is the last policy, the controller
-  if (req.session.me) return next();
+  if (req.session.myToken) return next();
 
   // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
   // send a 401 response letting the user agent know they need to login to

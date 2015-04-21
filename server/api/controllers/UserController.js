@@ -38,13 +38,13 @@ module.exports = {
       // TODO: token AND session??  api login token / website session???
       // "Remember" the user in the session
       // Subsequent requests from this user agent will have `req.session.me` set.
-      req.session.myToken = sailsTokenAuth.issueToken({ sid: user.id });
-      req.session.me = user;
+      req.session.myToken = sailsTokenAuth.issueToken({ sid: user.id, user: user });
+      //req.session.me = user;
 
       // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
       // send a 200 response letting the user agent know the login was successful.
       if (req.wantsJSON) {
-        return res.json({ user: user, token: sailsTokenAuth.issueToken({ sid: user.id }) });
+        return res.json({ token: sailsTokenAuth.issueToken({ sid: user.id, user: user }) });
       }
 
       // Otherwise if this is an HTML-wanting browser, redirect to /.
@@ -57,7 +57,7 @@ module.exports = {
     // "Forget" the user from the session.
     // Subsequent requests from this user agent will NOT have `req.session.me`.
     req.session.myToken = null;
-    req.session.me = null;
+    //req.session.me = null;
 
     // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
     // send a simple response letting the user agent know they were logged out
