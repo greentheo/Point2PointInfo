@@ -114,7 +114,9 @@ npm-debug.log
 .DS_STORE
 .netbeans
 nbproject
-/.idea/
+.idea
+.idea/workspace.xml
+/**/.idea/workspace.xml
 .node_history
 /.tmp
-
+/.cordova

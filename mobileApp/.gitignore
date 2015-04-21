@@ -1,6 +1,7 @@
 # Webstorm IDE files #
 ######################
 .idea
+.idea/workspace.xml
 
 # Phonegap-cli specific #
 #########################
@@ -52,3 +53,4 @@ Thumbs.db
 npm-debug.log
 node_modules
 
+/.idea
