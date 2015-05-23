@@ -4,7 +4,7 @@ define([
     'services/localservice',
     'dataservices/userdataservice'
 ],
-function(app, local, appData, userDataService) {
+function(app, appData, local, userDataService) {
     return {
         username: '',
         password: '',
