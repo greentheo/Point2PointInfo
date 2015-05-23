@@ -6,6 +6,14 @@
  */
 
 module.exports = {
-	
+  openData: function(req, res) {
+      res.ok("You have hit open data.");
+  },
+  secretData: function(req, res) {
+      res.ok("You have hit SECRET data.  SHHHH....");
+  },
+  secretTokenData: function(req, res) {
+      res.ok("You have used a TOKEN to hit SECRET data. Whoa...");
+  }
 };
 

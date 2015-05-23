@@ -19,10 +19,10 @@
 
 module.exports.policies = {
 
-  UserController: {
-    '*': 'isAuthenticated',
-    login: true,
-    signup: true
+  LocationController: {
+    openData: true,
+    secretData: 'sessionAuth',
+    secretTokenData: 'hasJsonWebToken'
   }
 
   /***************************************************************************
