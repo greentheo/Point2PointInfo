@@ -2,51 +2,60 @@ define([
     'durandal/app',
     'js/appdata',
     'services/localservice',
-    'dataservices/userdataservice'
+    'dataservices/userdataservice',
+    'dataservices/locationdataservice',
+    'plugins/observable'
 ],
-function(app, appData, local, userDataService) {
-    return {
+function(app, appData, local, userDataService, locationDataService, observables) {
+    var vm = {
         email: '',
         password: '',
         loggingIn: false,
         loginError: '',
         isAuthenticated: false,
 
-
-        login: function() {
+        login: function () {
             var that = this;
             that.loggingIn = true;
 
-            // 1. login
-            userDataService.login(that.email, that.password, function(response) {
-
-                // 2. get and set our token
-                userDataService.getToken(function(tokenResponse) {
-                    that.loggingIn = false;
-                    that.isAuthenticated = true;
-                    local.set(appData.AUTH_TOKEN, tokenResponse.token);
-
-                },
-                // error
-                function(tokenErrResponse) { processError('Cannot get the token: ' + tokenErrResponse); });
-
+            userDataService.login(that.email, that.password, function (response) {
+                that.loggingIn = false;
+                that.isAuthenticated = true;
+                that.loginError = '';
+                local.set(appData.AUTH_TOKEN, response.token);
             },
             // error
-            function(errResponse) { processError('Cannot login: ' + errResponse); });
-
-            function processError(message) {
+            function (errResponse) {
                 that.loggingIn = false;
-                that.loginError = message;
-            }
+                that.loginError = errResponse.responseJSON.error;
+            });
         },
 
-        logout: function() {
+        logout: function () {
             local.unset(appData.AUTH_TOKEN);
             this.isAuthenticated = false;
         },
 
-        activate: function() {
+        testResponse: '',
+        testService: function() {
+            var that = this;
+
+            locationDataService.postTestLocation(function(response) {
+                that.testResponse = response;
+            },
+            function(errResponse) {
+                that.testResponse = 'Unsuccessful!  Status: ' + errResponse.status;
+            });
+        },
+
+        activate: function () {
             this.isAuthenticated = appData.isAuthenticated();
         }
     };
+
+    observables.defineProperty(vm, 'loginFail', function() {
+        return this.loginError != '';
+    });
+
+    return vm;
 });

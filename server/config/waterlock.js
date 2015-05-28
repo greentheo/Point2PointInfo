@@ -53,15 +53,15 @@ module.exports.waterlock = {
   // this provides waterlock with basic information to build your tokens,
   // these tokens are used for authentication, password reset,
   // and anything else you can imagine
-  jsonWebTokens:{
+  jsonWebTokens: {
 
     // CHANGE THIS SECRET
-    secret: 'this is my secret',
+    secret: 'double reed bandit',
     expiry:{
       unit: 'days',
-      length: '7'
+      length: '1'
     },
-    audience: 'app name',
+    audience: 'collection server',
     subject: 'subject',
 
     // tracks jwt usage if set to true
@@ -82,9 +82,9 @@ module.exports.waterlock = {
     expiresProperty: 'expires',
 
     // configure whether or not to include
-    // the user in the respnse - this is useful if
-    // JWT is the default response for succesfull login
-    includeUserInJwtResponse: false
+    // the user in the response - this is useful if
+    // JWT is the default response for successful login
+    includeUserInJwtResponse: true
   },
 
   // Post Actions
@@ -103,7 +103,7 @@ module.exports.waterlock = {
       // obj - {controller: 'blog', action: 'post'}
       // string - 'custom json response string'
       // default - 'default'
-      success: 'default',
+      success: 'jwt',
 
       // This can be any one of the following
       //

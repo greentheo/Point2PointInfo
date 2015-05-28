@@ -6,13 +6,13 @@ define(['plugins/http', 'services/localservice'], function(http, local) {
         getJson: function(url, options, success, fail) {
             var token = local.get('authToken');
 
-            return http.get(fullUrl(url), options, token)
+            return http.get(fullUrl(url), options, { 'access_token': token })
                 .then(success)
                 .fail(fail);
         },
         postJson: function(url, jsonData, success, fail) {
             var token = local.get('authToken');
-            return http.post(fullUrl(url), jsonData, token)
+            return http.post(fullUrl(url), jsonData, { 'access_token': token })
                 .then(success)
                 .fail(fail);
         }
