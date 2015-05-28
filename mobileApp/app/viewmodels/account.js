@@ -41,7 +41,7 @@ function(app, appData, local, userDataService, locationDataService, observables)
             var that = this;
 
             locationDataService.postTestLocation(function(response) {
-                that.testResponse = response;
+                that.testResponse = response.message;
             },
             function(errResponse) {
                 that.testResponse = 'Unsuccessful!  Status: ' + errResponse.status;

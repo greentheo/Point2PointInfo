@@ -13,7 +13,7 @@ module.exports = {
       res.ok("You have hit SECRET data.  SHHHH....");
   },
   secretTokenData: function(req, res) {
-      res.ok("You have used a TOKEN to hit SECRET data. Whoa...");
+      res.json({ message: "You have used a TOKEN to hit SECRET data. Whoa..."});
   }
 };
 
