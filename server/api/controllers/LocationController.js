@@ -6,14 +6,21 @@
  */
 
 module.exports = {
-  openData: function(req, res) {
-      res.ok("You have hit open data.");
+  saveLocationData: function(req, res) {
+    var params = req.params.all();
+    var stuff = 'hi';
   },
-  secretData: function(req, res) {
-      res.ok("You have hit SECRET data.  SHHHH....");
-  },
-  secretTokenData: function(req, res) {
-      res.json({ message: "You have used a TOKEN to hit SECRET data. Whoa..."});
+  getLocationData: function(req, res) {
+    // TODO: adminstrator only
   }
+  //openData: function(req, res) {
+  //    res.ok("You have hit open data.");
+  //},
+  //secretData: function(req, res) {
+  //    res.ok("You have hit SECRET data.  SHHHH....");
+  //},
+  //secretTokenData: function(req, res) {
+  //    res.json({ message: "You have used a TOKEN to hit SECRET data. Whoa..."});
+  //}
 };
 

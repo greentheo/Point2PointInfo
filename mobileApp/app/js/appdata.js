@@ -12,6 +12,6 @@ define(['services/localservice'], function(local) {
         accelerometerData: [],
         accelerometerErrors: [],
 
-        isAuthenticated: function() { return local.get(auth_token); }
+        isAuthenticated: function() { return local.get(auth_token) != null; }
     };
 });

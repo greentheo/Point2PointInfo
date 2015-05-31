@@ -23,6 +23,8 @@ function(app, appData, local, userDataService, locationDataService, observables)
                 that.isAuthenticated = true;
                 that.loginError = '';
                 local.set(appData.AUTH_TOKEN, response.token);
+
+                appData.userName = response.user.auth.email;
             },
             // error
             function (errResponse) {
@@ -34,18 +36,6 @@ function(app, appData, local, userDataService, locationDataService, observables)
         logout: function () {
             local.unset(appData.AUTH_TOKEN);
             this.isAuthenticated = false;
-        },
-
-        testResponse: '',
-        testService: function() {
-            var that = this;
-
-            locationDataService.postTestLocation(function(response) {
-                that.testResponse = response.message;
-            },
-            function(errResponse) {
-                that.testResponse = 'Unsuccessful!  Status: ' + errResponse.status;
-            });
         },
 
         activate: function () {

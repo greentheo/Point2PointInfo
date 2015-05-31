@@ -3,16 +3,16 @@
     'js/appdata',
     'js/deviceacceleration',
     'js/devicelocation',
+    'dataservices/locationdataservice',
     'plugins/observable'
 ],
-function(app, appData, deviceAcceleration, deviceLocation, observables) {
+function(app, appData, deviceAcceleration, deviceLocation, locationService, observables) {
     var vm = {
         userName: '',
         buttonCaption: 'Start',
         collectionStart: null,
         collectionEnd: null,
         lastAccelerometer: deviceAcceleration.dummyData,
-        accelerometerData: [],
         accelerometerErrors: [],
         lastLocation: deviceLocation.dummyData,
         locationData: [],
@@ -20,6 +20,7 @@ function(app, appData, deviceAcceleration, deviceLocation, observables) {
         locationUnsupported: false,
         accelerationUnsupported: false,
         collectionInProgress: false,
+        sendingData: false,
         toggleCollection: function() {
 
             var toggle = { Start: 'End', End: 'Start' };
@@ -60,10 +61,6 @@ function(app, appData, deviceAcceleration, deviceLocation, observables) {
                 // accelerometer data to lastLocation
                 that.lastLocation.accelerometer.push(data);
 
-                // TODO: probably can remove this
-                // flat list of acceleration
-                if (that.collectionInProgress) that.accelerometerData.push(data);
-
                 that.lastAccelerometer = data;
             });
 
@@ -76,9 +73,46 @@ function(app, appData, deviceAcceleration, deviceLocation, observables) {
             });
 
         },
+
         endWatching: function() {
             deviceLocation.end();
             deviceAcceleration.end();
+        },
+
+        submitLocationData: function() {
+            var that = this;
+
+            that.sendingData = true;
+
+            locationService.postLocationData(
+                that.locationData,
+
+                // success
+                function(response) {
+                    that.sendingData = false;
+                    that.locationData = [];     // TODO: do we want to do this automatically or let the user decide?
+
+                    app.showMessage('Your location data was saved successfully.', 'Success');
+                },
+                // fail
+                function(errResponse) {
+                    that.sendingData = false;
+
+                    // TODO: find out where there message comes from
+                    var errorMessage = errResponse.message;
+
+                    app.showMessage('Could not save your location data!  Error: ' + errorMessage, 'ERROR');
+                });
+        },
+
+        clearLocationData: function() {
+            this.locationData = [];
+        },
+
+        canActivate: function() {
+            var isAuth = appData.isAuthenticated();
+            if (!isAuth) app.showMessage('You need to login first', 'Please Login');
+            return isAuth;
         },
 
         activate: function() {
@@ -109,6 +143,10 @@ function(app, appData, deviceAcceleration, deviceLocation, observables) {
 
     observables.defineProperty(vm, 'canCollect', function() {
         return this.userName != '';
+    });
+
+    observables.defineProperty(vm, 'canSubmitData', function() {
+        return this.locationData.length > 0 && !this.collectionInProgress;
     });
 
     observables.defineProperty(vm, 'oneOrMoreUnsupported', function() {

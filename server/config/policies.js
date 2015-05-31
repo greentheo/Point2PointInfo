@@ -20,9 +20,8 @@
 module.exports.policies = {
 
   LocationController: {
-    openData: true,
-    secretData: 'sessionAuth',
-    secretTokenData: 'hasJsonWebToken'
+    saveLocationData: 'hasJsonWebToken',
+    getLocationData: 'administratorOrOwnData'
   }
 
   /***************************************************************************

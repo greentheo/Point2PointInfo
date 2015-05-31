@@ -4,31 +4,25 @@ define(['plugins/http', 'services/localservice'], function(http, local) {
 
     return {
         getJson: function(url, options, success, fail) {
-            var token = local.get('authToken');
-
-            return http.get(fullUrl(url), options, { 'access_token': token })
+            return http.get(fullUrl(url), options, addTokenIfExists())
                 .then(success)
                 .fail(fail);
         },
         postJson: function(url, jsonData, success, fail) {
-            var token = local.get('authToken');
-            return http.post(fullUrl(url), jsonData, { 'access_token': token })
+            return http.post(fullUrl(url), jsonData, addTokenIfExists)
                 .then(success)
                 .fail(fail);
         }
     };
 
+    function addTokenIfExists() {
+        var token = local.get('authToken');
+        if (token == null) return undefined;
+
+        return { 'access_token': token};
+    }
+
     function fullUrl (url) {
         return baseUrl + url;
     }
-
-    // common settings for the http service
-    function setHttpOptions (url, dataName, optionsOrData, header) {
-        var options = { url: baseUrl + url };
-        if (optionsOrData) options[dataName] = optionsOrData;
-        if (header) options.header = header;
-
-        // return a completed object suitable for the durandal http plugin
-        return options;
-    };
 });
