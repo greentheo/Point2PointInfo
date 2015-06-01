@@ -9,7 +9,7 @@ define(['plugins/http', 'services/localservice'], function(http, local) {
                 .fail(fail);
         },
         postJson: function(url, jsonData, success, fail) {
-            return http.post(fullUrl(url), jsonData, addTokenIfExists)
+            return http.post(fullUrl(url), jsonData, addTokenIfExists())
                 .then(success)
                 .fail(fail);
         }

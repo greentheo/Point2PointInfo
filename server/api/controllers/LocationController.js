@@ -9,6 +9,11 @@ module.exports = {
   saveLocationData: function(req, res) {
     var params = req.params.all();
     var stuff = 'hi';
+
+    // make sure we have user id passed in
+    res.ok('saved!');
+
+    //locationService.saveLocationData()
   },
   getLocationData: function(req, res) {
     // TODO: adminstrator only

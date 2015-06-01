@@ -1,12 +1,13 @@
 ﻿define([
     'durandal/app',
+    'knockout',
     'js/appdata',
     'js/deviceacceleration',
     'js/devicelocation',
     'dataservices/locationdataservice',
     'plugins/observable'
 ],
-function(app, appData, deviceAcceleration, deviceLocation, locationService, observables) {
+function(app, ko, appData, deviceAcceleration, deviceLocation, locationService, observables) {
     var vm = {
         userName: '',
         buttonCaption: 'Start',
@@ -79,13 +80,39 @@ function(app, appData, deviceAcceleration, deviceLocation, locationService, obse
             deviceAcceleration.end();
         },
 
+        addTestLocationData: function() {
+            this.locationData.push({
+                timestamp: new Date(),
+                coords: {
+                    latitude: 40.009032,
+                    longitude: -105.097926,
+                    altitude: 1613.39,
+                    accuracy: 3,
+                    altitudeAccuracy: 3,
+                    heading: 90,
+                    speed: 0.5
+                },
+                accelerometer: [
+                    { x: 0.123, y: 0.234, z: 0.345 },
+                    { x: 0.01, y: 0.345, z: 0.5 },
+                    { x: 0.234, y: -0.5, z: -0.321 }
+                ]
+            });
+        },
+
         submitLocationData: function() {
             var that = this;
+            var dataToSend = ko.toJS(that.locationData);
 
             that.sendingData = true;
 
             locationService.postLocationData(
-                that.locationData,
+
+                // data to send
+                {
+                    locationData: dataToSend,
+                    userEmail: that.userName
+                },
 
                 // success
                 function(response) {
@@ -94,6 +121,7 @@ function(app, appData, deviceAcceleration, deviceLocation, locationService, obse
 
                     app.showMessage('Your location data was saved successfully.', 'Success');
                 },
+
                 // fail
                 function(errResponse) {
                     that.sendingData = false;

@@ -1,12 +1,13 @@
 define([
     'durandal/app',
+    'plugins/router',
     'js/appdata',
     'services/localservice',
     'dataservices/userdataservice',
     'dataservices/locationdataservice',
     'plugins/observable'
 ],
-function(app, appData, local, userDataService, locationDataService, observables) {
+function(app, router, appData, local, userDataService, locationDataService, observables) {
     var vm = {
         email: '',
         password: '',
@@ -25,6 +26,8 @@ function(app, appData, local, userDataService, locationDataService, observables)
                 local.set(appData.AUTH_TOKEN, response.token);
 
                 appData.userName = response.user.auth.email;
+
+                router.navigate('collector');
             },
             // error
             function (errResponse) {
