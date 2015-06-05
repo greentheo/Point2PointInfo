@@ -93,9 +93,9 @@ function(app, ko, appData, deviceAcceleration, deviceLocation, locationService, 
                     speed: 0.5
                 },
                 accelerometer: [
-                    { x: 0.123, y: 0.234, z: 0.345 },
-                    { x: 0.01, y: 0.345, z: 0.5 },
-                    { x: 0.234, y: -0.5, z: -0.321 }
+                    { x: 0.123, y: 0.234, z: 0.345, timestamp: new Date() },
+                    { x: 0.01, y: 0.345, z: 0.5, timestamp: new Date() },
+                    { x: 0.234, y: -0.5, z: -0.321, timestamp: new Date() }
                 ]
             });
         },

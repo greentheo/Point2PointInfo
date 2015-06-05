@@ -8,12 +8,20 @@
 module.exports = {
   saveLocationData: function(req, res) {
     var params = req.params.all();
-    var stuff = 'hi';
+    var userEmail = req.params.userEmail;
+    var locationData = req.params.locationData;
 
-    // make sure we have user id passed in
-    res.ok('saved!');
+    if (userEmail == null || locationData == null) {
+      return res.serverError({ message: 'User email and location data are required.'});
+    }
 
-    //locationService.saveLocationData()
+    locationService.saveUserLocationData(userEmail, locationData, function(err) {
+      if (err) {
+        return res.serverError(err);
+      }
+
+      res.json({ success: true });
+    });
   },
   getLocationData: function(req, res) {
     // TODO: adminstrator only

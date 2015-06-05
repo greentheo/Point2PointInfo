@@ -8,6 +8,7 @@
 module.exports = {
 
   attributes: {
+    timestamp: { type: 'date', required: true },
     x: { type: 'float', required: true },
     y: { type: 'float', required: true },
     z: { type: 'float', required: true },
