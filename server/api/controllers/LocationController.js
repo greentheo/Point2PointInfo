@@ -8,8 +8,8 @@
 module.exports = {
   saveLocationData: function(req, res) {
     var params = req.params.all();
-    var userEmail = req.params.userEmail;
-    var locationData = req.params.locationData;
+    var userEmail = params.userEmail;
+    var locationData = params.locationData;
 
     if (userEmail == null || locationData == null) {
       return res.serverError({ message: 'User email and location data are required.'});

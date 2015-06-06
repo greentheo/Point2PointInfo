@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af099719-b0ce-49d9-ab1e-ab1e3de8bfe9" name="Default" comment="removed unnecessary utils ref">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/api/models/Acceleration.js" afterPath="$PROJECT_DIR$/../server/api/models/Acceleration.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/api/controllers/LocationController.js" afterPath="$PROJECT_DIR$/../server/api/controllers/LocationController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/viewmodels/collector.js" afterPath="$PROJECT_DIR$/app/viewmodels/collector.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/api/services/locationService.js" afterPath="$PROJECT_DIR$/../server/api/services/locationService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" />
