@@ -23,17 +23,18 @@ module.exports = {
       res.json({ success: true });
     });
   },
+
   getLocationData: function(req, res) {
-    // TODO: adminstrator only
+    var params = req.params.all();
+    var userEmail = params.userEmail;
+
+    locationService.getUserLocationData(userEmail, function(err, locationData) {
+      if (err) {
+        return res.serverError(err);
+      }
+
+      res.json(locationData);
+    });
   }
-  //openData: function(req, res) {
-  //    res.ok("You have hit open data.");
-  //},
-  //secretData: function(req, res) {
-  //    res.ok("You have hit SECRET data.  SHHHH....");
-  //},
-  //secretTokenData: function(req, res) {
-  //    res.json({ message: "You have used a TOKEN to hit SECRET data. Whoa..."});
-  //}
 };
 
