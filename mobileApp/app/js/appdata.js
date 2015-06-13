@@ -1,4 +1,4 @@
-define(['services/localservice'], function(local) {
+define(['js/services/localservice'], function(local) {
     // defines app level data, constants and functionality
     var auth_token = 'authToken';
     return {

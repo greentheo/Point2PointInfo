@@ -4,7 +4,7 @@
     'js/appdata',
     'js/deviceacceleration',
     'js/devicelocation',
-    'dataservices/locationdataservice',
+    'js/dataservices/locationdataservice',
     'plugins/observable'
 ],
 function(app, ko, appData, deviceAcceleration, deviceLocation, locationService, observables) {

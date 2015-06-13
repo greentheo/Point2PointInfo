@@ -7,9 +7,7 @@
         'knockout': '../lib/knockout/knockout-3.1.0',
         'knockoutpunches': '../lib/knockout/knockout.punches',
         'bootstrap': '../lib/bootstrap/js/bootstrap',
-        'jquery': '../lib/jquery/jquery',
-        'dataservices': 'js/dataservices',
-        'services': 'js/services'
+        'jquery': '../lib/jquery/jquery'
     },
     shim: {
         'bootstrap': {
@@ -73,6 +71,4 @@ function (system, app, viewLocator, deviceEvents, ko, $) {
             $(this).collapse('hide');
         }
     });
-
-
 });

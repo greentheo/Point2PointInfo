@@ -2,9 +2,9 @@ define([
     'durandal/app',
     'plugins/router',
     'js/appdata',
-    'services/localservice',
-    'dataservices/userdataservice',
-    'dataservices/locationdataservice',
+    'js/services/localservice',
+    'js/dataservices/userdataservice',
+    'js/dataservices/locationdataservice',
     'plugins/observable'
 ],
 function(app, router, appData, local, userDataService, locationDataService, observables) {

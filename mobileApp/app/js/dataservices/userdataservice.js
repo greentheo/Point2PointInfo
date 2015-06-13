@@ -1,4 +1,4 @@
-define(['dataservices/basedataservice'], function(svc) {
+define(['js/dataservices/basedataservice'], function(svc) {
     return {
         login: function(email, password, success, fail) {
             return svc.postJson('/auth/login', { email: email, password: password }, success, fail);

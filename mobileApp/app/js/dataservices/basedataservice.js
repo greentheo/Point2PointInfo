@@ -1,4 +1,4 @@
-define(['plugins/http', 'services/localservice'], function(http, local) {
+define(['plugins/http', 'js/services/localservice'], function(http, local) {
 
     var baseUrl = 'http://localhost:1337';     // TODO: configurable for dev vs. server???
 
