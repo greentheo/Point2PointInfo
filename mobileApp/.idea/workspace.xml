@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af099719-b0ce-49d9-ab1e-ab1e3de8bfe9" name="Default" comment="removed unnecessary utils ref">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../collector/src/dataservices/appdata.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../collector/src/dataservices/basedataservice.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../collector/src/dataservices/localservice.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../collector/src/dataservices/locationdataservice.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../collector/src/dataservices/userdataservice.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../collector/src/deviceservices/deviceacceleration.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../collector/src/deviceservices/deviceevents.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../collector/src/deviceservices/devicelocation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" />
     </list>
     <ignored path="mobileApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,11 +66,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="appdata.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="appdata.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/appdata.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.664557">
+            <state vertical-scroll-proportion="0.0">
               <caret line="14" column="77" selection-start-line="4" selection-start-column="8" selection-end-line="14" selection-end-column="77" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deviceevents.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/deviceevents.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="13" selection-start-line="14" selection-start-column="14" selection-end-line="17" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deviceacceleration.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/deviceacceleration.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.4444447">
+              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="devicelocation.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/js/devicelocation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5727848">
+              <caret line="95" column="9" selection-start-line="14" selection-start-column="8" selection-end-line="95" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -816,27 +843,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/devicelocation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.0588236">
-          <caret line="46" column="46" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/deviceevents.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9705882">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/deviceacceleration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.9411764">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/collector.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -896,14 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="64" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/dataservices/basedataservice.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -938,8 +936,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/appdata.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.664557">
+        <state vertical-scroll-proportion="0.0">
           <caret line="14" column="77" selection-start-line="4" selection-start-column="8" selection-end-line="14" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="64" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/deviceevents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="13" selection-start-line="14" selection-start-column="14" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/deviceacceleration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.4444447">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/devicelocation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5727848">
+          <caret line="95" column="9" selection-start-line="14" selection-start-column="8" selection-end-line="95" selection-end-column="9" />
           <folding />
         </state>
       </provider>
