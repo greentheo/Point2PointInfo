@@ -18,7 +18,6 @@ export class AppData {
 
   isAuthenticated() { return this.localService.getItem(auth_token) != null; }
 
-
   constructor(localService) {
     this.localService = localService;
   }

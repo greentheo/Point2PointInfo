@@ -1,0 +1,32 @@
+<template>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12">
+        <h2 class="text-center">Please Login</h2>
+      </div>
+    </div>
+    <div show.bind="isAuthenticated">
+      <div class="row">
+        <div class="form-group">
+          <label for="userEmail">Email</label>
+          <input type="text" class="form-control" id="userEmail" placeholder="Email" value.bind="email">
+        </div>
+        <div class="form-group">
+          <label for="password">User Name</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" value.bind="password">
+        </div>
+        <button class="btn btn-default btn-lg btn-block" disabled.bind="loggingIn" click.trigger="login()">Login</button>
+      </div>
+      <div class="col-xs-12 col-sm-12 pull-left" show.bind="loginFail">
+        <br />
+        <div class="alert alert-danger" role="alert">${loginError}</div>
+      </div>
+    </div>
+    <div show.bind="isAuthenticated">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12">You are logged in.</div>
+        <button class="btn btn-lg btn-block" click.bind="logout">Logout</button>
+      </div>
+    </div>
+  </div>
+</template>
