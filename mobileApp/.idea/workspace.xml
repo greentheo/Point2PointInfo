@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af099719-b0ce-49d9-ab1e-ab1e3de8bfe9" name="Default" comment="removed unnecessary utils ref">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../collector/src/account.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../collector/src/account.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../collector/src/collector.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../collector/src/child-router.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../collector/src/child-router.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../collector/src/flickr.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../collector/src/flickr.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/app.js" afterPath="$PROJECT_DIR$/../collector/src/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/dataservices/appdata.js" afterPath="$PROJECT_DIR$/../collector/src/dataservices/appdata.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../collector/src/collector.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/account.html" afterPath="$PROJECT_DIR$/../collector/src/account.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mobileApp.iws" />
@@ -102,11 +95,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="collector.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="collector.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/viewmodels/collector.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7277628">
-              <caret line="180" column="71" selection-start-line="180" selection-start-column="7" selection-end-line="180" selection-end-column="71" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="collector.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/collector.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4755043">
+              <caret line="28" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -867,13 +870,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/collector.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="157" selection-start-line="18" selection-start-column="157" selection-end-line="18" selection-end-column="157" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1003,8 +999,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/viewmodels/collector.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7277628">
-          <caret line="180" column="71" selection-start-line="180" selection-start-column="7" selection-end-line="180" selection-end-column="71" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/collector.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4755043">
+          <caret line="28" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding />
         </state>
       </provider>

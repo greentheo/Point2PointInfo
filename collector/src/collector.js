@@ -144,8 +144,6 @@ export class Collector {
     return this.locationUnsupported || this.accelerationUnsupported;
   };
 
-  // TODO: instead of defining "locationSupported", just bind to !locationUnsupported
-
   canActivate() {
     var isAuth = this.appData.isAuthenticated();
     if (!isAuth) alert('You need to login first');
