@@ -1,5 +1,5 @@
-import {DeviceEvents} from 'deviceevents';
 import {EventAggregator} from 'aurelia-event-aggregator';
+import {DeviceEvents} from './deviceevents';
 
 // Encapsulates capturing geolocation events.
 

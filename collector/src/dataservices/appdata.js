@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-framework';
-import {LocalService} from 'localservice';
+import {LocalService} from './localservice';
 
 let auth_token = 'authToken';
 
@@ -15,6 +15,7 @@ export class AppData {
   locationErrors = [];
   accelerometerData = [];
   accelerometerErrors = [];
+  deviceReady = false;
 
   isAuthenticated() { return this.localService.getItem(auth_token) != null; }
 

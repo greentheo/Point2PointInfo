@@ -1,4 +1,4 @@
-import {DeviceEvents} from 'deviceevents';
+import {DeviceEvents} from './deviceevents';
 import {EventAggregator} from 'aurelia-event-aggregator';
 
 // Handles acceleration events and data capture.  Since acceleration is captured differently on a device vs.

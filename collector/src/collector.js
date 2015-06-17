@@ -1,12 +1,13 @@
 import {inject} from 'aurelia-framework';
 import {computedFrom} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import {AppData} from 'dataservices/appdata';
-import {LocationDataService} from 'dataservices/locationdataservice';
-import {DeviceAcceleration} from 'deviceservices/deviceacceleration';
-import {DeviceLocation} from 'deviceservices/devicelocation';
+import {AppData} from './dataservices/appdata';
+import {LocationDataService} from './dataservices/locationdataservice';
+import {DeviceEvents} from './deviceservices/deviceevents';
+import {DeviceAcceleration} from './deviceservices/deviceacceleration';
+import {DeviceLocation} from './deviceservices/devicelocation';
 
-@inject(EventAggregator, AppData, LocationDataService, DeviceAcceleration, DeviceLocation)
+@inject(EventAggregator, AppData, LocationDataService, DeviceEvents, DeviceAcceleration, DeviceLocation)
 export class Collector {
 
   userName = '';
@@ -22,6 +23,7 @@ export class Collector {
   accelerationUnsupported = false;
   collectionInProgress = false;
   sendingData = false;
+  deviceReady = false;
 
   toggleCollection() {
     var toggle = { Start: 'End', End: 'Start' };
@@ -129,9 +131,9 @@ export class Collector {
     this.locationData = [];
   };
 
-  @computedFrom('userName')
+  @computedFrom('userName', 'deviceReady')
   get canCollect() {
-    return this.userName != '';
+    return this.userName != '' && this.deviceReady;
   };
 
   @computedFrom('locationData', 'collectionInProgress')
@@ -156,19 +158,29 @@ export class Collector {
     this.locationErrors = this.appData.locationErrors;
     this.accelerometerData = this.appData.accelerometerData;
     this.accelerometerErrors = this.appData.accelerometerErrors;
-  
-    this.startWatching();
-    // this.startWatching.apply(this);   // not necessary?
+    this.deviceReady = this.appData.deviceReady;
+
+    if (!this.deviceReady) {
+      this.deviceEvents.bindEvents();
+
+      this.eventAggregator.subscribe('deviceready', () => {
+        this.appData.deviceReady = true;
+        this.deviceReady = true;
+
+        this.startWatching();
+      });
+    }
   };
 
   deactivate() {
     this.endWatching();
   };
 
-  constructor(eventAggregator, appData, locationDataService, deviceAcceleration, deviceLocation) {
+  constructor(eventAggregator, appData, locationDataService, deviceEvents, deviceAcceleration, deviceLocation) {
     this.eventAggregator = eventAggregator;
     this.appData = appData;
     this.locationDataService = locationDataService;
+    this.deviceEvents = deviceEvents;
     this.deviceAcceleration = deviceAcceleration;
     this.deviceLocation = deviceLocation;
   }

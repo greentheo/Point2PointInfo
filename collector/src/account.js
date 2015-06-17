@@ -1,8 +1,8 @@
 import {inject} from 'aurelia-framework';
 import {computedFrom} from 'aurelia-framework';
-import {AppData} from 'dataservices/appdata';
-import {LocalService} from 'dataservices/localservice';
-import {UserDataService} from 'dataservices/userdataservice';
+import {AppData} from './dataservices/appdata';
+import {LocalService} from './dataservices/localservice';
+import {UserDataService} from './dataservices/userdataservice';
 
 @inject(AppData, LocalService, UserDataService)
 export class Account {

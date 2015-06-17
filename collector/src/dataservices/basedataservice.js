@@ -1,6 +1,6 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
-import {LocalService} from 'localservice';
+import {LocalService} from './localservice';
 
 let baseUrl = 'http://localhost:1337';
 
@@ -27,6 +27,7 @@ export class BaseDataService {
   }
 
   fullUrl (url) {
+    if (url.indexOf('/') != 0) url = '/' + url;
     return baseUrl + url;
   }
 

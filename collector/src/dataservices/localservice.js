@@ -1,14 +1,14 @@
 export class LocalService {
 
-  static getItem (key) {
+  getItem (key) {
     return localStorage.getItem(key);
   }
 
-  static setItem (key, val) {
+  setItem (key, val) {
     return localStorage.setItem(key, val);
   }
 
-  static unsetItem (key) {
+  unsetItem (key) {
     return localStorage.removeItem(key);
   }
 }

@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-framework';
-import {BaseDataService} from 'basedataservice';
+import {BaseDataService} from './basedataservice';
 
 @inject(BaseDataService)
 export class LocationDataService {
