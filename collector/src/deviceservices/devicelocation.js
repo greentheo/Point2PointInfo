@@ -1,3 +1,4 @@
+import {inject} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {DeviceEvents} from './deviceevents';
 
@@ -26,15 +27,14 @@ export class DeviceLocation {
     }
   };
     
-  isDevice = this.deviceEvents.isDevice();
+  isDevice = null;
   
   handle = null;
   
   start() {
-    var that = this;
-  
+
     if (!navigator.geolocation) {
-      that.eventAggregator.publish('location.unsupported');
+      this.eventAggregator.publish('location.unsupported');
       return;
     }
 
@@ -59,36 +59,37 @@ export class DeviceLocation {
        message: String
      }
      */
-    that.handle = navigator.geolocation.watchPosition(
+    this.handle = navigator.geolocation.watchPosition(
       position => {
         // adjust collected info
-        position.timestamp = new Date(position.timestamp);
-        that.eventAggregator.publish('location.capture', position);
+        //position.timestamp = new Date(position.timestamp);      // TODO: this doesn't work in Aurelia.  Why did I do this before, anyway?
+        this.eventAggregator.publish('location.capture', position);
       },
-      error => that.eventAggregator.publish('location.error', error),
+      error => this.eventAggregator.publish('location.error', error),
   
       // options
       {
         enableHighAccuracy: true
       });
   
-    if (that.handle) that.eventAggregator.publish('location.start');
+    if (this.handle) this.eventAggregator.publish('location.start');
   };
   
   end() {
-    var that = this;
-  
-    if (that.handle !== null) {
-      navigator.geolocation.clearWatch(that.handle);
-      that.handle = null;
+
+    if (this.handle !== null) {
+      navigator.geolocation.clearWatch(this.handle);
+      this.handle = null;
     }
   
-    that.eventAggregator.publish('location.end');
+    this.eventAggregator.publish('location.end');
   };
 
   constructor(deviceEvents, eventAggregator) {
     this.deviceEvents = deviceEvents;
     this.eventAggregator = eventAggregator;
+
+    this.isDevice = this.deviceEvents.isDevice();
   }
 }
 

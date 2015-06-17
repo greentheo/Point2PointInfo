@@ -1,3 +1,4 @@
+import {inject} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
 
 // Bind Event Listeners
@@ -29,5 +30,7 @@ export class DeviceEvents {
 
   constructor(eventAggregator) {
     this.eventAggregator = eventAggregator;
+
+    this.onDeviceReady = this.onDeviceReady.bind(this);
   }
 }

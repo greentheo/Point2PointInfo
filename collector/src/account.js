@@ -1,10 +1,11 @@
 import {inject} from 'aurelia-framework';
 import {computedFrom} from 'aurelia-framework';
+import {Router} from 'aurelia-router';
 import {AppData} from './dataservices/appdata';
 import {LocalService} from './dataservices/localservice';
 import {UserDataService} from './dataservices/userdataservice';
 
-@inject(AppData, LocalService, UserDataService)
+@inject(Router, AppData, LocalService, UserDataService)
 export class Account {
 
   email ='';
@@ -23,11 +24,11 @@ export class Account {
           this.loggingIn = false;
           this.isAuthenticated = true;
           this.loginError = '';
-          this.localService.setItem(this.appData.AUTH_TOKEN, response.token);
+          this.localService.setItem(this.appData.AUTH_TOKEN, response.content.token);
 
-          this.appData.userName = response.user.auth.email;
+          this.appData.userName = response.content.user.auth.email;
 
-          router.navigate('collector');
+          this.router.navigate('collector');
         },
         errResponse => {
           this.loggingIn = false;
@@ -49,7 +50,8 @@ export class Account {
     return this.loginError != '';
   };
 
-  constructor(appData, localService, userDataService) {
+  constructor(router, appData, localService, userDataService) {
+    this.router = router;
     this.appData = appData;
     this.localService = localService;
     this.userDataService = userDataService;

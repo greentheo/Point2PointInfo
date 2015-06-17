@@ -8,22 +8,24 @@ let baseUrl = 'http://localhost:1337';
 export class BaseDataService {
 
   getJson (url, options, success, fail) {
-    return http.get(this.fullUrl(url), options, this.addTokenIfExists())
-      .then(success)
-      .fail(fail);
+    var request = this.http.createRequest(url).asGet().withContent(jsonData);
+    request = this.addTokenToRequest(request);
+
+    request.send().then(success);
   }
 
   postJson (url, jsonData, success, fail) {
-    return http.post(this.fullUrl(url), jsonData, this.addTokenIfExists())
-      .then(success)
-      .fail(fail);
+    var request = this.http.createRequest(url).asPost().withContent(jsonData);
+    request = this.addTokenToRequest(request);
+
+    request.send().then(success);
   }
 
-  addTokenIfExists() {
-    let token = localService.getItem('authToken');
-    if (token == null) return undefined;
+  addTokenToRequest(request) {
+    let token = this.localService.getItem('authToken');
+    if (token == null) return request;
 
-    return { 'access_token': token };
+    return request.withHeader('access_token', token);
   }
 
   fullUrl (url) {
@@ -34,6 +36,10 @@ export class BaseDataService {
   constructor(http, localService) {
     this.http = http;
     this.localService = localService;
+
+    this.http.configure(h => {
+      h.withBaseUrl(baseUrl);
+    });
   }
 }
 

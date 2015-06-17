@@ -14,9 +14,9 @@ export class Collector {
   buttonCaption = 'Start';
   collectionStart = null;
   collectionEnd = null;
-  lastAccelerometer = this.deviceAcceleration.dummyData;
+  lastAccelerometer = null;
   accelerometerErrors = [];
-  lastLocation = this.deviceLocation.dummyData;
+  lastLocation = null;
   locationData = [];
   locationErrors = [];
   locationUnsupported = false;
@@ -183,5 +183,8 @@ export class Collector {
     this.deviceEvents = deviceEvents;
     this.deviceAcceleration = deviceAcceleration;
     this.deviceLocation = deviceLocation;
+
+    this.lastAccelerometer = this.deviceAcceleration.dummyData;
+    this.lastLocation = this.deviceLocation.dummyData;
   }
 }

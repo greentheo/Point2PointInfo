@@ -1,3 +1,4 @@
+import {inject} from 'aurelia-framework';
 import {DeviceEvents} from './deviceevents';
 import {EventAggregator} from 'aurelia-event-aggregator';
 
@@ -21,9 +22,8 @@ export class DeviceAcceleration {
     z: null
   };
 
-  handle;
-
-  isDevice = this.deviceEvents.isDevice();
+  handle = null;
+  isDevice = false;
 
   start() {
     if (this.isDevice) {
@@ -99,11 +99,21 @@ export class DeviceAcceleration {
       timestamp: new Date()
     }
 
+    if (this.eventAggregator == undefined) {
+      console.error('No eventAggregator present!');
+      console.error(this);
+    }
+
     this.eventAggregator.publish('acceleration.capture', data);
   };
 
   constructor(deviceEvents, eventAggregator) {
     this.deviceEvents = deviceEvents;
     this.eventAggregator = eventAggregator;
+
+    this.isDevice = this.deviceEvents.isDevice();
+
+    // preserve lexical this
+    this._mobileWebEvent = this._mobileWebEvent.bind(this);
   }
 }
