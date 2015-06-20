@@ -2,7 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-12">
-        <h2 class="text-center">Please Login</h2>
+        <h2 if.bind="!isAuthenticated" class="text-center">Please Login</h2>
+        <h2 if.bind="isAuthenticated" class="text-center">Logged In</h2>
       </div>
     </div>
     <div show.bind="!isAuthenticated">
@@ -24,7 +25,7 @@
     </div>
     <div show.bind="isAuthenticated">
       <div class="row">
-        <div class="col-xs-12 col-sm-12">You are logged in.</div>
+        <div class="col-xs-12 col-sm-12 text-center">${email}</div>
         <button class="btn btn-lg btn-block" click.trigger="logout()">Logout</button>
       </div>
     </div>

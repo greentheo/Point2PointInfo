@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b5bf593-2d0d-42d0-9aba-86147b388b0b" name="Default" comment="&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/account.html" afterPath="$PROJECT_DIR$/../collector/src/account.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/account.js" afterPath="$PROJECT_DIR$/../collector/src/account.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/dataservices/appdata.js" afterPath="$PROJECT_DIR$/../collector/src/dataservices/appdata.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/dataservices/basedataservice.js" afterPath="$PROJECT_DIR$/../collector/src/dataservices/basedataservice.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/collector.js" afterPath="$PROJECT_DIR$/../collector/src/collector.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/deviceservices/deviceacceleration.js" afterPath="$PROJECT_DIR$/../collector/src/deviceservices/deviceacceleration.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/deviceservices/deviceevents.js" afterPath="$PROJECT_DIR$/../collector/src/deviceservices/deviceevents.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/deviceservices/devicelocation.js" afterPath="$PROJECT_DIR$/../collector/src/deviceservices/devicelocation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/dataservices/locationdataservice.js" afterPath="$PROJECT_DIR$/../collector/src/dataservices/locationdataservice.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/dataservices/userdataservice.js" afterPath="$PROJECT_DIR$/../collector/src/dataservices/userdataservice.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/collector.html" afterPath="$PROJECT_DIR$/../collector/src/collector.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="server.iws" />

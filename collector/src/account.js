@@ -49,6 +49,7 @@ export class Account {
 
   activate() {
     this.isAuthenticated = this.appData.isAuthenticated();
+    this.email = this.appData.userName;
   }
 
   @computedFrom('loginError')
