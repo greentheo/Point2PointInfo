@@ -1,5 +1,4 @@
-import {inject} from 'aurelia-framework';
-import {computedFrom} from 'aurelia-framework';
+import {inject, computedFrom} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {AppData} from './dataservices/appdata';
 import {LocationDataService} from './dataservices/locationdataservice';
@@ -9,6 +8,18 @@ import {DeviceLocation} from './deviceservices/devicelocation';
 
 @inject(EventAggregator, AppData, LocationDataService, DeviceEvents, DeviceAcceleration, DeviceLocation)
 export class Collector {
+
+  constructor(eventAggregator, appData, locationDataService, deviceEvents, deviceAcceleration, deviceLocation) {
+    this.eventAggregator = eventAggregator;
+    this.appData = appData;
+    this.locationDataService = locationDataService;
+    this.deviceEvents = deviceEvents;
+    this.deviceAcceleration = deviceAcceleration;
+    this.deviceLocation = deviceLocation;
+
+    this.lastAccelerometer = this.deviceAcceleration.dummyData;
+    this.lastLocation = this.deviceLocation.dummyData;
+  }
 
   userName = '';
   buttonCaption = 'Start';
@@ -30,7 +41,7 @@ export class Collector {
     var command = this.buttonCaption;
     this.buttonCaption = toggle[this.buttonCaption];
     this.collectionInProgress = command === 'Start';
-  };
+  }
 
   startWatching() {
     
@@ -70,12 +81,12 @@ export class Collector {
     });
 
     this.eventAggregator.subscribe('acceleration.unsupported', () => this.accelerationUnsupported = true);
-  };
+  }
 
   endWatching() {
     this.deviceLocation.end();
     this.deviceAcceleration.end();
-  };
+  }
 
   addTestLocationData() {
     this.locationData.push({
@@ -95,7 +106,7 @@ export class Collector {
         { x: 0.234, y: -0.5, z: -0.321, timestamp: new Date() }
       ]
     });
-  };
+  }
 
   submitLocationData() {
     this.sendingData = true;
@@ -125,32 +136,32 @@ export class Collector {
         // TODO: is there an Aurelia equivalent to the old durandal dialog?
         alert('Could not save your location data!  Error: ' + errorMessage);
       });
-  };
+  }
 
   clearLocationData() {
     this.locationData = [];
-  };
+  }
 
   @computedFrom('userName', 'deviceReady')
   get canCollect() {
     return this.userName != '' && this.deviceReady;
-  };
+  }
 
   @computedFrom('locationData', 'collectionInProgress')
   get canSubmitData() {
     return this.locationData.length > 0 && !this.collectionInProgress;
-  };
+  }
 
   @computedFrom('locationUnsupported', 'accelerationUnsupported')
   get oneOrMoreUnsupported() {
     return this.locationUnsupported || this.accelerationUnsupported;
-  };
+  }
 
   canActivate() {
     var isAuth = this.appData.isAuthenticated();
     if (!isAuth) alert('You need to login first');
     return isAuth;
-  };
+  }
 
   activate() {
     this.userName = this.appData.userName;
@@ -170,21 +181,9 @@ export class Collector {
         this.startWatching();
       });
     }
-  };
+  }
 
   deactivate() {
     this.endWatching();
-  };
-
-  constructor(eventAggregator, appData, locationDataService, deviceEvents, deviceAcceleration, deviceLocation) {
-    this.eventAggregator = eventAggregator;
-    this.appData = appData;
-    this.locationDataService = locationDataService;
-    this.deviceEvents = deviceEvents;
-    this.deviceAcceleration = deviceAcceleration;
-    this.deviceLocation = deviceLocation;
-
-    this.lastAccelerometer = this.deviceAcceleration.dummyData;
-    this.lastLocation = this.deviceLocation.dummyData;
   }
 }

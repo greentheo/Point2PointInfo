@@ -15,6 +15,16 @@ import {EventAggregator} from 'aurelia-event-aggregator';
 @inject(DeviceEvents, EventAggregator)
 export class DeviceAcceleration {
 
+  constructor(deviceEvents, eventAggregator) {
+    this.deviceEvents = deviceEvents;
+    this.eventAggregator = eventAggregator;
+
+    this.isDevice = this.deviceEvents.isDevice();
+
+    // preserve lexical this
+    this._mobileWebEvent = this._mobileWebEvent.bind(this);
+  }
+
   dummyData = {
     timestamp: null,
     x: null,
@@ -36,7 +46,7 @@ export class DeviceAcceleration {
     if (this.handle) {
       this.eventAggregator.publish('acceleration.start');
     }
-  };
+  }
 
   end() {
     if (this.handle !== null) {
@@ -49,7 +59,7 @@ export class DeviceAcceleration {
     }
 
     this.eventAggregator.publish('acceleration.end');
-  };
+  }
 
   _deviceStart() {
     /* acceleration is an Acceleration object:
@@ -65,12 +75,12 @@ export class DeviceAcceleration {
         acceleration => this.eventAggregator.publish('acceleration.capture', acceleration),
         () => this.eventAggregator.publish('acceleration.error', { timestamp: new Date() })
     );
-  };
+  }
 
   _deviceEnd() {
     navigator.geolocation.clearWatch(this.handle);
     this.handle = null;
-  };
+  }
 
   _mobileWebStart() {
     
@@ -83,12 +93,12 @@ export class DeviceAcceleration {
     window.addEventListener('devicemotion', this._mobileWebEvent, false);
 
     this.handle = 'mobilewebaccelerometer';
-  };
+  }
 
   _mobileWebEnd() {
     window.removeEventListener('devicemotion', this._mobileWebEvent, false);
     this.handle = null;
-  };
+  }
 
   _mobileWebEvent(accelEvent) {
 
@@ -99,21 +109,6 @@ export class DeviceAcceleration {
       timestamp: new Date()
     }
 
-    if (this.eventAggregator == undefined) {
-      console.error('No eventAggregator present!');
-      console.error(this);
-    }
-
     this.eventAggregator.publish('acceleration.capture', data);
-  };
-
-  constructor(deviceEvents, eventAggregator) {
-    this.deviceEvents = deviceEvents;
-    this.eventAggregator = eventAggregator;
-
-    this.isDevice = this.deviceEvents.isDevice();
-
-    // preserve lexical this
-    this._mobileWebEvent = this._mobileWebEvent.bind(this);
   }
 }

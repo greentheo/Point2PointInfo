@@ -14,6 +14,13 @@ import {DeviceEvents} from './deviceevents';
 @inject(DeviceEvents, EventAggregator)
 export class DeviceLocation {
 
+  constructor(deviceEvents, eventAggregator) {
+    this.deviceEvents = deviceEvents;
+    this.eventAggregator = eventAggregator;
+
+    this.isDevice = this.deviceEvents.isDevice();
+  }
+
   dummyData = {
     timestamp: null,
     coords: {
@@ -73,7 +80,7 @@ export class DeviceLocation {
       });
   
     if (this.handle) this.eventAggregator.publish('location.start');
-  };
+  }
   
   end() {
 
@@ -83,13 +90,6 @@ export class DeviceLocation {
     }
   
     this.eventAggregator.publish('location.end');
-  };
-
-  constructor(deviceEvents, eventAggregator) {
-    this.deviceEvents = deviceEvents;
-    this.eventAggregator = eventAggregator;
-
-    this.isDevice = this.deviceEvents.isDevice();
   }
 }
 

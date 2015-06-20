@@ -7,18 +7,35 @@ let baseUrl = 'http://localhost:1337';
 @inject(HttpClient, LocalService)
 export class BaseDataService {
 
-  getJson (url, options, success, fail) {
-    var request = this.http.createRequest(url).asGet().withContent(jsonData);
-    request = this.addTokenToRequest(request);
+  constructor(http, localService) {
+    this.http = http;
+    this.localService = localService;
 
-    request.send().then(success);
+    this.http.configure(h => h.withBaseUrl(baseUrl));
   }
 
-  postJson (url, jsonData, success, fail) {
-    var request = this.http.createRequest(url).asPost().withContent(jsonData);
+  getJson (url, options, cb) {
+    var request =
+      this.http.createRequest(url)
+        .asGet()
+        .withContent(options);
+
+    // add token if it exists
     request = this.addTokenToRequest(request);
 
-    request.send().then(success);
+    request.send().then(cb);
+  }
+
+  postJson (url, jsonData, cb) {
+    var request =
+      this.http.createRequest(url)
+        .asPost()
+        .withContent(jsonData);
+
+    // add token if it exists
+    request = this.addTokenToRequest(request);
+
+    request.send().then(cb);
   }
 
   addTokenToRequest(request) {
@@ -31,15 +48,6 @@ export class BaseDataService {
   fullUrl (url) {
     if (url.indexOf('/') != 0) url = '/' + url;
     return baseUrl + url;
-  }
-
-  constructor(http, localService) {
-    this.http = http;
-    this.localService = localService;
-
-    this.http.configure(h => {
-      h.withBaseUrl(baseUrl);
-    });
   }
 }
 

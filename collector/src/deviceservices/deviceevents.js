@@ -9,6 +9,13 @@ import {EventAggregator} from 'aurelia-event-aggregator';
 @inject(EventAggregator)
 export class DeviceEvents {
 
+  constructor(eventAggregator) {
+    this.eventAggregator = eventAggregator;
+
+    // preserve lexical this
+    this.onDeviceReady = this.onDeviceReady.bind(this);
+  }
+
   bindEvents() {
 
     // if device app, wait for device ready event
@@ -26,11 +33,5 @@ export class DeviceEvents {
 
   isDevice() {
     return document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
-  }
-
-  constructor(eventAggregator) {
-    this.eventAggregator = eventAggregator;
-
-    this.onDeviceReady = this.onDeviceReady.bind(this);
   }
 }
