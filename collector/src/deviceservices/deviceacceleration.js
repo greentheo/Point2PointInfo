@@ -26,6 +26,10 @@ export class DeviceAcceleration {
     this._mobileWebEvent = this._mobileWebEvent.bind(this);
   }
 
+  /**
+   * Dummy object with same properties as an acceleration object
+   * @type {object}
+   */
   dummyData = {
     timestamp: null,
     x: null,
@@ -33,9 +37,21 @@ export class DeviceAcceleration {
     z: null
   };
 
+  /**
+   * Handle for the acceleration watcher
+   */
   handle = null;
+
+  /**
+   * Whether or not the app is being run on a device
+   * @type {boolean}
+   */
   isDevice = false;
 
+  /**
+   * Starts watching for acceleration events.
+   * Publishes the 'acceleration.start' event if successful.
+   */
   start() {
     if (this.isDevice) {
       this._deviceStart();
@@ -49,6 +65,10 @@ export class DeviceAcceleration {
     }
   }
 
+  /**
+   * Ends watching acceleration events.
+   * Publishes the 'acceleration.end' when complete.
+   */
   end() {
     if (this.handle !== null) {
       if (this.isDevice) {
@@ -62,6 +82,12 @@ export class DeviceAcceleration {
     this.eventAggregator.publish('acceleration.end');
   }
 
+  /**
+   * Will be run on a device to start watching acceleration data.
+   * Publishes the 'acceleration.capture' event with acceleration data,
+   * or the 'acceleration.error' event if an error occurs.
+   * @private
+   */
   _deviceStart() {
     /* acceleration is an Acceleration object:
      {
@@ -78,11 +104,20 @@ export class DeviceAcceleration {
     );
   }
 
+  /**
+   * Will be run on a device to stop watching acceleration data
+   * @private
+   */
   _deviceEnd() {
     navigator.geolocation.clearWatch(this.handle);
     this.handle = null;
   }
 
+  /**
+   * Will be run on a mobile web browser to start watching acceleration data.
+   * If unable to start, will publish the 'acceleration.unsupported' event
+   * @private
+   */
   _mobileWebStart() {
     
     if (!window.DeviceMotionEvent) {
@@ -96,11 +131,20 @@ export class DeviceAcceleration {
     this.handle = 'mobilewebaccelerometer';
   }
 
+  /**
+   * Will be run on a mobile web browser to stop watching acceleration data
+   * @private
+   */
   _mobileWebEnd() {
     window.removeEventListener('devicemotion', this._mobileWebEvent, false);
     this.handle = null;
   }
 
+  /**
+   * The function that responds to a mobile web devicemotion event
+   * @param accelEvent {acceleration} - contains the acceleration data
+   * @private
+   */
   _mobileWebEvent(accelEvent) {
 
     var data = {
