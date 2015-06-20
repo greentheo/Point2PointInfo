@@ -2,16 +2,17 @@ import {inject} from 'aurelia-framework';
 import {DeviceEvents} from './deviceevents';
 import {EventAggregator} from 'aurelia-event-aggregator';
 
-// Handles acceleration events and data capture.  Since acceleration is captured differently on a device vs.
-//  mobile browser, this encapsulates either approach.
-
-// Events:
-// - acceleration.capture (data)
-// - acceleration.error
-// - acceleration.start
-// - acceleration.end
-// - acceleration.unsupported
-
+/**
+ * Handles acceleration events and data capture.  Since acceleration is captured differently on a device vs.
+ * mobile browser, this encapsulates either approach.
+ *
+ * Events:
+ * - acceleration.capture (data)
+ * - acceleration.error
+ * - acceleration.start
+ * - acceleration.end
+ * - acceleration.unsupported
+ */
 @inject(DeviceEvents, EventAggregator)
 export class DeviceAcceleration {
 

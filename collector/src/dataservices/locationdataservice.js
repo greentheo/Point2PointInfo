@@ -1,6 +1,9 @@
 import {inject} from 'aurelia-framework';
 import {BaseDataService} from './basedataservice';
 
+/**
+ * Provides functions for posting location data
+ */
 @inject(BaseDataService)
 export class LocationDataService {
 
@@ -8,7 +11,13 @@ export class LocationDataService {
     this.baseDataService = baseDataService;
   }
 
-  postLocationData (locationData, success, fail) {
-    return this.baseDataService.postJson('/location/savelocationdata', locationData, success, fail);
+  /**
+   * Posts a user's location data
+   * @param locationData {Array of LocationData objects} - the collected location data
+   * @param cb {function} - the callback to handle the results of the request
+   * @returns {Bluebird Promise}
+   */
+  postLocationData (locationData, cb) {
+    return this.baseDataService.postJson('/location/savelocationdata', locationData, cb);
   }
 }

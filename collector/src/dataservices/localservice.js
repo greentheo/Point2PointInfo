@@ -1,3 +1,6 @@
+/**
+ * Provides a quick abstraction to interacting with localService data
+ */
 export class LocalService {
 
   getItem (key) {

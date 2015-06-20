@@ -3,6 +3,9 @@ import {LocalService} from './localservice';
 
 let auth_token = 'authToken';
 
+/**
+ * Provides data at an app level.  Uses localStorage for values.
+ */
 @inject(LocalService)
 export class AppData {
 
