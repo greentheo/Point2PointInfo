@@ -1,16 +1,18 @@
 import {inject, computedFrom} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
+import {AppConfig} from './config/appconfig';
 import {AppData} from './dataservices/appdata';
 import {LocationDataService} from './dataservices/locationdataservice';
 import {DeviceEvents} from './deviceservices/deviceevents';
 import {DeviceAcceleration} from './deviceservices/deviceacceleration';
 import {DeviceLocation} from './deviceservices/devicelocation';
 
-@inject(EventAggregator, AppData, LocationDataService, DeviceEvents, DeviceAcceleration, DeviceLocation)
+@inject(EventAggregator, AppConfig, AppData, LocationDataService, DeviceEvents, DeviceAcceleration, DeviceLocation)
 export class Collector {
 
-  constructor(eventAggregator, appData, locationDataService, deviceEvents, deviceAcceleration, deviceLocation) {
+  constructor(eventAggregator, config, appData, locationDataService, deviceEvents, deviceAcceleration, deviceLocation) {
     this.eventAggregator = eventAggregator;
+    this.config = config;
     this.appData = appData;
     this.locationDataService = locationDataService;
     this.deviceEvents = deviceEvents;
@@ -35,6 +37,7 @@ export class Collector {
   collectionInProgress = false;
   sendingData = false;
   deviceReady = false;
+  testLocationData = false;
 
   toggleCollection() {
     var toggle = { Start: 'End', End: 'Start' };
@@ -157,6 +160,11 @@ export class Collector {
     return this.locationUnsupported || this.accelerationUnsupported;
   }
 
+  @computedFrom('collectionInProgress', 'testLocationData')
+  get showTestDataButton() {
+    return this.collectionInProgress && this.testLocationData;
+  }
+
   canActivate() {
     var isAuth = this.appData.isAuthenticated();
     if (!isAuth) alert('You need to login first');
@@ -170,6 +178,7 @@ export class Collector {
     this.accelerometerData = this.appData.accelerometerData;
     this.accelerometerErrors = this.appData.accelerometerErrors;
     this.deviceReady = this.appData.deviceReady;
+    this.testLocationData = this.config.testLocationData;
 
     if (!this.deviceReady) {
       this.deviceEvents.bindEvents();

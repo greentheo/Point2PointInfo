@@ -2,7 +2,7 @@
  * tokenAdministratorOrOwnData
  *
  * @module      :: Policy
- * @description :: Assumes that your request has an jwt.  Requires you to be asking for your own data, or be an administrator;
+ * @description :: Assumes that your request has an jwt.  Requires you to be asking for your own data, or be an administrator
  *
  * @docs        :: http://waterlock.ninja/documentation
  */

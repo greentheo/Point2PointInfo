@@ -1,33 +1,35 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
 import {LocalService} from './localservice';
-
-let baseUrl = 'http://localhost:1337';
+import {AppConfig} from '../config/appconfig';
 
 /**
  * Base data service that takes care of common config setup tasks for getting and posting data
  */
-@inject(HttpClient, LocalService)
+@inject(HttpClient, LocalService, AppConfig)
 export class BaseDataService {
 
-  constructor(http, localService) {
+  constructor(http, localService, config) {
     this.http = http;
     this.localService = localService;
+    this.config = config;
 
-    this.http.configure(h => h.withBaseUrl(baseUrl));
+    this.http.configure(h => h.withBaseUrl(this.config.baseUrl));
   }
 
   /**
    * Sends a get json request.
    * @param {string} url - The url of the request.  Do not include the base url here.
-   * @param {object} options - options to send with the request.
+   * @param {object} options - options to send with the request.  Will be converted to a URL arguments string
    * @param {function} cb - callback function which will contain the json data from the request
    */
   getJson (url, options, cb) {
+    if (typeof options == 'object') {
+      url += this.convertOptionstoUrlString(options);
+    }
+
     var request =
-      this.http.createRequest(url)
-        .asGet()
-        .withContent(options);
+      this.http.createRequest(url).asGet();
 
     // add token if it exists
     request = this.addTokenToRequest(request);
@@ -73,6 +75,28 @@ export class BaseDataService {
   fullUrl (url) {
     if (url.indexOf('/') != 0) url = '/' + url;
     return baseUrl + url;
+  }
+
+  /**
+   * Iterates the provided options object and returns a url encoded argument string
+   * suitable for a get request.
+   * @param options
+   * @returns {string} - formatted argument string
+   */
+  convertOptionstoUrlString(options) {
+    let results = '';
+
+    for (var prop in options) {
+      if (results == '') {
+        results = '?';
+      } else {
+        results += '&';
+      }
+
+      results += prop + '=' + encodeURIComponent(options[prop]);
+    }
+
+    return results;
   }
 }
 

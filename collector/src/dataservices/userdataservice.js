@@ -27,7 +27,7 @@ export class UserDataService {
    * @param cb {function} - the callback to handle the results of the request
    * @returns {Bluebird Promise}
    */
-  logout (cb) {
-    // TODO:  what???? you want to log out???
+  logout (email, cb) {
+    return this.baseDataService.postJson('/auth/logout', { email: email }, cb);
   }
 }

@@ -43,8 +43,11 @@ export class Account {
   }
 
   logout() {
-    this.localService.unsetItem(this.appData.AUTH_TOKEN);
-    this.isAuthenticated = false;
+
+    this.userDataService.logout(this.email, response => {
+      this.localService.unsetItem(this.appData.AUTH_TOKEN);
+      this.isAuthenticated = false;
+    });
   }
 
   activate() {
