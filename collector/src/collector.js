@@ -11,7 +11,6 @@ import {DeviceLocation} from './deviceservices/devicelocation';
 export class Collector {
 
   constructor(eventAggregator, config, appData, locationDataService, deviceEvents, deviceAcceleration, deviceLocation) {
-    this.eventAggregator = eventAggregator;
     this.config = config;
     this.appData = appData;
     this.locationDataService = locationDataService;
@@ -19,8 +18,60 @@ export class Collector {
     this.deviceAcceleration = deviceAcceleration;
     this.deviceLocation = deviceLocation;
 
+    // note: in aurelia docs, example shows setting this to an object property.
+    // however, when I do this, it doesn't receive events.
+    // Further research found the example contact list.  In that code, it does NOT
+    // set the injected aggregator to an object property, but uses it directly
+    // in the constructor code.  THIS pattern works.
+    // this.eventAggregator = eventAggregator;
+
     this.lastAccelerometer = this.deviceAcceleration.dummyData;
     this.lastLocation = this.deviceLocation.dummyData;
+
+    // here's all of the events to listen for:
+
+    // if the device is already ready, start watching.  Otherwise,
+    // wait for it for to report ready, THEN start watching.
+    if (this.appData.deviceReady) {
+      this.startWatching();
+    } else {
+      eventAggregator.subscribe('deviceready', () => {
+
+        this.appData.deviceReady = true;
+        this.deviceReady = true;
+
+        this.startWatching();
+      });
+    }
+
+    eventAggregator.subscribe('location.capture', data => {
+      this.lastLocation = data;
+      this.lastLocation.accelerometer = [];
+
+      if (this.collectionInProgress) this.locationData.push(this.lastLocation);
+    });
+
+    eventAggregator.subscribe('location.unsupported', () => this.locationUnsupported = true);
+
+    eventAggregator.subscribe('acceleration.capture', data => {
+
+      if (!this.lastLocation) return;
+      if (!this.lastLocation.accelerometer) return;
+
+      // so we can attribute specific accelerometer stuff to a location, we'll add all
+      // accelerometer data to lastLocation
+      this.lastLocation.accelerometer.push(data);
+
+      this.lastAccelerometer = data;
+    });
+
+    eventAggregator.subscribe('acceleration.error', data => {
+      if (this.collectionInProgress) {
+        this.accelerometerErrors.push(data);
+      }
+    });
+
+    eventAggregator.subscribe('acceleration.unsupported', () => this.accelerationUnsupported = true);
   }
 
   userName = '';
@@ -47,43 +98,8 @@ export class Collector {
   }
 
   startWatching() {
-    
-    // geolocation
-
     this.deviceLocation.start();
-
-    this.eventAggregator.subscribe('location.capture', data => {
-      this.lastLocation = data;
-      this.lastLocation.accelerometer = [];
-
-      if (this.collectionInProgress) this.locationData.push(this.lastLocation);
-    });
-
-    this.eventAggregator.subscribe('location.unsupported', () => this.locationUnsupported = true);
-
-    // acceleration
-
     this.deviceAcceleration.start();
-
-    this.eventAggregator.subscribe('acceleration.capture', data => {
-
-      if (!this.lastLocation) return;
-      if (!this.lastLocation.accelerometer) return;
-
-      // so we can attribute specific accelerometer stuff to a location, we'll add all
-      // accelerometer data to lastLocation
-      this.lastLocation.accelerometer.push(data);
-
-      this.lastAccelerometer = data;
-    });
-
-    this.eventAggregator.subscribe('acceleration.error', data => { 
-      if (this.collectionInProgress) {
-        this.accelerometerErrors.push(data);
-      }
-    });
-
-    this.eventAggregator.subscribe('acceleration.unsupported', () => this.accelerationUnsupported = true);
   }
 
   endWatching() {
@@ -180,15 +196,21 @@ export class Collector {
     this.deviceReady = this.appData.deviceReady;
     this.testLocationData = this.config.testLocationData;
 
+    console.log("Device ready on activation: " + this.deviceReady);
+
     if (!this.deviceReady) {
+      console.log("Device NOT ready, binding events");
+
       this.deviceEvents.bindEvents();
 
-      this.eventAggregator.subscribe('deviceready', () => {
-        this.appData.deviceReady = true;
-        this.deviceReady = true;
-
-        this.startWatching();
-      });
+      //this.eventAggregator.subscribe('deviceready', () => {
+      //  console.log("Collector:  DeviceReady event FIRED.");
+      //
+      //  this.appData.deviceReady = true;
+      //  this.deviceReady = true;
+      //
+      //  this.startWatching();
+      //});
     }
   }
 

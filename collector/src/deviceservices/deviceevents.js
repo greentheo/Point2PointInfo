@@ -35,6 +35,7 @@ export class DeviceEvents {
    * Handles the device ready event, and publishes a 'deviceready' event.
    */
   onDeviceReady() {
+    console.log("FIRED: onDeviceReady");
     this.eventAggregator.publish('deviceready');
   }
 

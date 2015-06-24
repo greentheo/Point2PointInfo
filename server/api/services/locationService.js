@@ -26,6 +26,8 @@ module.exports = {
           newLocation.heading = newLocation.coords.heading;
           newLocation.speed = newLocation.coords.speed;
 
+          if (newLocation.captureTimestamp) newLocation.timestamp = newLocation.captureTimestamp;
+
           delete newLocation.coords;
 
           // translate all timestamp fields from date strings to dates

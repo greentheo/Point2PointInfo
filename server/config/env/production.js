@@ -17,15 +17,15 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
-  models: {
-    connection: 'someMysqlServerProd'
-  },
+  //models: {
+  //  connection: 'mongodbServer'
+  //},
 
   /***************************************************************************
    * Set the port in the production environment to 80                        *
    ***************************************************************************/
 
-  port: 480,
+  //port: 480,
 
   /***************************************************************************
    * Set the log level in production environment to "silent"                 *

@@ -83,8 +83,13 @@ export class DeviceLocation {
      */
     this.handle = navigator.geolocation.watchPosition(
       position => {
+
         // adjust collected info
-        //position.timestamp = new Date(position.timestamp);      // TODO: this doesn't work in Aurelia.  Why did I do this before, anyway?
+        position.captureTimestamp = new Date(position.timestamp);
+        //if (!position.timestamp) {
+        //  position.timestamp = new Date(position.timestamp);      // TODO: this doesn't work in Aurelia.  Why did I do this before, anyway?
+        //}
+
         this.eventAggregator.publish('location.capture', position);
       },
       error => this.eventAggregator.publish('location.error', error),

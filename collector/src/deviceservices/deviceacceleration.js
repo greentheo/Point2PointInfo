@@ -99,7 +99,9 @@ export class DeviceAcceleration {
     */
 
     this.handle = navigator.accelerometer.watchAcceleration(
-        acceleration => this.eventAggregator.publish('acceleration.capture', acceleration),
+        acceleration => {
+          this.eventAggregator.publish('acceleration.capture', acceleration);
+        },
         () => this.eventAggregator.publish('acceleration.error', { timestamp: new Date() })
     );
   }
