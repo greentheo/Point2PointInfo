@@ -1,3 +1,5 @@
+var uuid = require('node-uuid');
+
 module.exports = {
 
   saveUserLocationData: function(userEmail, locationData, cb) {
@@ -13,8 +15,13 @@ module.exports = {
 
       var user = auths[0].user;
 
+      // assign the same session id for all location data
+      var session = uuid.v4();
+
       for (var i = 0; i < locationData.length; i++) {
         var newLocation = locationData[i];
+
+        newLocation.sessionId = session;
 
         // add the coords object props to the location object
         if (newLocation.coords !== undefined) {

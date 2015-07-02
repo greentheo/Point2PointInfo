@@ -150,7 +150,7 @@ export class Collector {
         this.sendingData = false;
   
         // TODO: find out where there message comes from
-        var errorMessage = errResponse.message;
+        var errorMessage = JSON.parse(errResponse.response).message;
 
         // TODO: is there an Aurelia equivalent to the old durandal dialog?
         alert('Could not save your location data!  Error: ' + errorMessage);

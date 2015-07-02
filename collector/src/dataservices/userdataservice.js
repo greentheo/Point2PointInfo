@@ -18,8 +18,8 @@ export class UserDataService {
    * @param cb {function} - the callback to handle the results of the request
    * @returns {Bluebird Promise}
    */
-  login (email, password, cb) {
-    return this.baseDataService.postJson('/auth/login', { email: email, password: password }, cb);
+  login (email, password, cb, fail) {
+    return this.baseDataService.postJson('/auth/login', { email: email, password: password }, cb, fail);
   }
 
   /**
@@ -27,7 +27,7 @@ export class UserDataService {
    * @param cb {function} - the callback to handle the results of the request
    * @returns {Bluebird Promise}
    */
-  logout (email, cb) {
-    return this.baseDataService.postJson('/auth/logout', { email: email }, cb);
+  logout (email, cb, fail) {
+    return this.baseDataService.postJson('/auth/logout', { email: email }, cb, fail);
   }
 }

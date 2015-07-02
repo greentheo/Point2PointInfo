@@ -17,7 +17,7 @@ module.exports = {
 
     locationService.saveUserLocationData(userEmail, locationData, function(err) {
       if (err) {
-        return res.serverError(err);
+        return res.serverError({ message: err.message });
       }
 
       res.json({ success: true });
