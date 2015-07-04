@@ -18,6 +18,6 @@ export class LocationDataService {
    * @returns {Bluebird Promise}
    */
   postLocationData (locationData, cb, fail) {
-    return this.baseDataService.postJson('/location/savelocationdata', locationData, cb, fail);
+    return this.baseDataService.postJson('/location/save', locationData, cb, fail);
   }
 }
