@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a4caf72-ae31-4070-b0d5-cd6629d7e8f0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/dataservices/locationdataservice.js" afterPath="$PROJECT_DIR$/../collector/src/dataservices/locationdataservice.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../collector/src/collector.html" afterPath="$PROJECT_DIR$/../collector/src/collector.html" />
     </list>
     <ignored path="server.iws" />
     <ignored path=".idea/workspace.xml" />
