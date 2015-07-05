@@ -1,0 +1,202 @@
+---
+title: "BasicAnalysis"
+author: "Theo Van Rooy"
+date: "6/28/2015"
+output: html_document
+runtime: shiny
+---
+
+```{r echo=FALSE}
+library(dplyr)
+library(ggplot2)
+library(rmongodb)
+library(shiny)
+library(lubridate)
+library(OpenStreetMapR)
+
+## rmongodb cheat sheet
+#http://cran.r-project.org/web/packages/rmongodb/vignettes/rmongodb_cheat_sheet.pdf
+
+getData = function(){
+  mongo = mongo.create(host = 'localhost')
+  
+  mongo.count(mongo, "bumpiness.user")
+  
+  bumpData = mongo.find.all(mongo, "bumpiness.location")
+  mongo.destroy(mongo)
+  return(bumpData)
+}
+
+```
+
+
+## Basic Stats
+
+### Unique users
+```{r echo=FALSE}
+
+
+mongo = mongo.create(host = 'localhost')
+  
+users = mongo.count(mongo, "bumpiness.user")
+
+renderDataTable({
+  data.frame(users=users)
+})
+
+```
+
+
+### Data Collected
+
+```{r echo=FALSE}
+dataPoints = mongo.count(mongo, "bumpiness.location")
+
+renderDataTable({
+  data.frame(dataPoints=dataPoints)
+})
+
+mongo.destroy(mongo)
+```
+
+
+## Analysis of Collected Data
+
+### Data Collected By ...
+
+```{r echo=FALSE}
+bumpData = getData()
+
+
+#df = data.frame(lat=0, long=0, altitude=0, speed=0, gpsTimestamp=Sys.time(), user="nouser", accelTimeStamp=Sys.time(), accelx=0, accely=0, accelz=0)
+df = list()
+r = 1
+cn = function(x){
+return(as.numeric(as.character(x)))}
+for(i in (length(bumpData)-1600):length(bumpData)){
+  bd = bumpData[[i]]
+  ac = bd$accelerometer
+  
+#   try({
+#     data.frame(matrix(unlist(ac), ncol=4))
+#     
+#     
+#   })
+  for(j in 1:length(bd$accelerometer)){
+    try({
+      
+    
+      df[[r]]= data.frame(lat=cn(bd$latitude) 
+                                , long=cn(bd$longitude) 
+                                , altitude=cn(bd$altitude)
+                                , speed=cn(bd$speed)
+                                , gpsTimestamp=as.POSIXct(bd$timestamp)
+                                , user=bd$user
+                                , accelTimestamp=as.POSIXct(ac[[j]]$timestamp)
+                                , accelMS = j/length(bd$accelerometer) * as.numeric(difftime(ac[[length(ac)]]$timestamp,ac[[1]]$timestamp))
+                                , accelx=cn(ac[[j]]$x)
+                                , accely=cn(ac[[j]]$y)
+                                , accelz=cn(ac[[j]]$z)
+                                , masterSort=r
+                                , accelSort=j )
+                                #, sessionId=bd$sessionId)                  
+   
+      r=r+1
+    })
+    }
+  } 
+
+
+a = unlist(df)
+data = data.frame(matrix(a,ncol = length(df[[1]]), byrow = T))
+colnames(data) = names(df[[1]])
+
+renderTable({ 
+  data %>% 
+    #group_by(sessionId) %>% 
+    
+    group_by(user) %>%
+    summarize(numGPS = length(unique(gpsTimestamp))
+              , numAccel = length(accelTimestamp)
+              , avgSpeed = mean(speed, na.omit=T)) 
+  })
+
+```
+
+### Accelerometers
+
+#### Plot of Accelerometer readings stacked end to end 
+Take all accelerometer readings for a user and plot them sorted by time.
+
+```{r echo=FALSE}
+
+renderPlot({
+  
+  ggplot(data, aes(x=masterSort, y=accelx))+geom_line()
+  
+})
+
+```
+
+#### Plot of Accelerometer data by GPS TimeStamp
+This represents accelerometer readings for each GPS submission
+```{r echo=FALSE}
+
+
+renderPlot({
+  
+  ggplot(data, aes(x=masterSort, y=accelx, color=factor(gpsTimestamp)))+geom_line()
+  
+})
+
+renderPlot({
+  
+  #ggplot(data, aes(x=accelSort, y=accelx, color=factor(gpsTimestamp)))+geom_line()
+  
+})
+
+dataLong = rbind(data.frame(accelTime=data$accelMS, gpsTimestamp=data$gpsTimestamp,  accel=data$accelx, label="accelx")
+                 ,data.frame(accelTime=data$accelMS, gpsTimestamp=data$gpsTimestamp,  accel=data$accely, label="accely")
+                 ,data.frame(accelTime=data$accelMS, gpsTimestamp=data$gpsTimestamp, accel=data$accelz, label="accelz")
+                 )
+
+renderPlot({
+  ggplot(dataLong, aes(x=accelTime, y=accel, group=factor(gpsTimestamp)))+
+           geom_line()+
+           facet_grid(label~. )
+})
+
+```
+
+
+
+### Bumpiness Map
+
+```{r echo=FALSE, results='asis'}
+
+mapData = data %>% 
+  group_by(lat, long) %>%
+  summarize( numPoints = length(lat)
+             ,sumSqAccel = sum(accelx^2+accely^2+accelz^2)) %>%
+  group_by() %>%
+  mutate(sumSqAccelNorm = sqrt(sumSqAccel/max(sumSqAccel))*10)
+
+mapData$lat = cn(mapData$lat)
+mapData$long = cn(mapData$long)
+
+  
+map=OSMMap(df = as.data.frame(mapData), lat = "lat", long="long", size="sumSqAccelNorm")
+print(map, returnText=T)
+
+
+```
+
+```{r echo=FALSE}
+renderPlot({
+  ggplot(mapData, aes(x=lat, y=-long, size=sumSqAccel))+geom_point()  
+})
+```
+
+
+```
+
