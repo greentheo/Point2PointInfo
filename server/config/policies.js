@@ -20,8 +20,8 @@
 module.exports.policies = {
 
   LocationController: {
-    saveLocationData: 'hasJsonWebToken',
-    getLocationData: 'tokenAdministratorOrOwnData'
+    save: 'hasJsonWebToken',
+    query: 'tokenAdministratorOrOwnData'
   }
 
   /***************************************************************************
