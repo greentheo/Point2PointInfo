@@ -38,7 +38,7 @@ export class Account {
         },
         errResponse => {
           this.loggingIn = false;
-          this.loginError = errResponse.responseJSON.error;
+          this.loginError = JSON.parse(errResponse.response).error;
         });
   }
 

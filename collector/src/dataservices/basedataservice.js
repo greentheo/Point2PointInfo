@@ -23,7 +23,7 @@ export class BaseDataService {
    * @param {object} options - options to send with the request.  Will be converted to a URL arguments string
    * @param {function} cb - callback function which will contain the json data from the request
    */
-  getJson (url, options, cb) {
+  getJson (url, options, cb, fail) {
     if (typeof options == 'object') {
       url += this.convertOptionstoUrlString(options);
     }
@@ -34,7 +34,8 @@ export class BaseDataService {
     // add token if it exists
     request = this.addTokenToRequest(request);
 
-    request.send().then(cb);
+    fail = fail || cb;
+    request.send().then(cb).catch(fail);
   }
 
   /**
@@ -43,7 +44,7 @@ export class BaseDataService {
    * @param {object} jsonData - data in json format to post to the server
    * @param {function} cb - callback function which will contain the results from the request
    */
-  postJson (url, jsonData, cb) {
+  postJson (url, jsonData, cb, fail) {
     var request =
       this.http.createRequest(url)
         .asPost()
@@ -52,7 +53,8 @@ export class BaseDataService {
     // add token if it exists
     request = this.addTokenToRequest(request);
 
-    request.send().then(cb);
+    fail = fail || cb;
+    request.send().then(cb).catch(fail);
   }
 
   /**

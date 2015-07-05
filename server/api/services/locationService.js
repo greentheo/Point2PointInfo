@@ -1,3 +1,5 @@
+var uuid = require('node-uuid');
+
 module.exports = {
 
   saveUserLocationData: function(userEmail, locationData, cb) {
@@ -13,8 +15,13 @@ module.exports = {
 
       var user = auths[0].user;
 
+      // assign the same session id for all location data
+      var session = uuid.v4();
+
       for (var i = 0; i < locationData.length; i++) {
         var newLocation = locationData[i];
+
+        newLocation.sessionId = session;
 
         // add the coords object props to the location object
         if (newLocation.coords !== undefined) {
@@ -41,7 +48,7 @@ module.exports = {
     });
   },
 
-  getUserLocationData: function(userEmail, cb) {
+  getUserLocationData: function(userEmail, start, end, count, skip, cb) {
 
     // note: if "populate" is not called on auth's user association, then auth.user will simply
     // be the user's id, which is all we need here.
@@ -55,18 +62,47 @@ module.exports = {
         return cb(new Error('Could not find user with that email'));
       }
 
-      User.findOne(auths[0].user).populate('locations').exec(function (err, user) {
-        if (err) {
-          return cb(err);
+      // build our query object
+      var locationQuery = undefined;
+      if (start || end || count || skip) {
+        locationQuery = {};
+
+        if (start)
+          locationQuery.timestamp = { greaterThanOrEqual : new Date(start) };
+
+        if (end) {
+          locationQuery.timestamp = locationQuery.timestamp || {};
+          locationQuery.timestamp.lessThanOrEqual = new Date(end);
         }
 
-        cb(null, user.locations);
-      });
+        if (count)
+          locationQuery.limit = count;
 
-      //Locations.find()
-      //  .where({ user: auths[0].user }).exec(function(err, locationData) {
-      //    var stuff = 'hi';
-      //  });
-    });
+        if (skip)
+          locationQuery.skip = skip;
+      }
+
+      User
+        .findOne(auths[0].user)
+        .populate('locations', locationQuery)
+        .exec(function (err, user) {
+          if (err)
+            return cb(err);
+
+          cb(null, user.locations);
+        });
+      });
+  },
+
+  getSessionLocationData: function(sessionId, cb) {
+    Location
+      .findBySessionId(sessionId)
+      .populate('user')
+      .exec(function(err, locations) {
+        if (err)
+          return cb(err);
+
+        cb(null, locations);
+      })
   }
 };

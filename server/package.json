@@ -36,5 +36,8 @@
     "url": "git://github.com/Kent/sailstest.git"
   },
   "author": "Kent",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "node-uuid": "^1.4.3"
+  }
 }
