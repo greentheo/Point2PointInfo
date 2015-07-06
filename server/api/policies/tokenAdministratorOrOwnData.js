@@ -20,20 +20,24 @@ module.exports = function(req, res, next) {
 
     // check for email in the request parameters and see if it matches the email of
     // the user's token
-    var userEmail = req.params['userEmail'];
+    var params = req.params.all();
+    var userEmail = params.userEmail;
 
     // no email on the request = not allowed
     if (userEmail === null || userEmail === undefined) {
       return res.forbidden();
     }
 
-    // emails don't match
-    if (userEmail != user.auth.userEmail) {
-      return res.forbidden();
-    }
+    Auth.findById(user.auth).exec(function(err, auths) {
+      // emails don't match
+      var auth = auths[0];
+      if (userEmail != auth.email) {
+        return res.forbidden();
+      }
 
-    // valid request
-    next();
+      // valid request
+      next();
+    });
   });
 };
 
