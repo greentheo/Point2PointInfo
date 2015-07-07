@@ -18,15 +18,17 @@ The /api/controllers area will define our actual API that clients will be able t
 
 */location/query*: Queries location data.  Supported arguments:
 
-- userEmail: Currently required (looking at changeing this)  Normal user can ask for his own data.  Administrator can ask for any user's data.
+- userEmail: Optional.
 - start:  Date string to look for location data on or after the specified date.  Specify as 'yyyy-mm-dd'.  Optional.
 - end:  Date string to look for location data on or before the specified date.  Specify as 'yyyy-mm-dd'.  Optional.
+- minLat: Minimum latitude to include. Optional. 
+- maxLat: Maximum latitude to include. Optional.
+- minLong: Minimum longitude to include. Optional. 
+- maxLong: Maximum longitude to include. Optional.
+- sessionId: optional. 
+- userId: optional. 
 - count: Number of records to return.  Optional.
 - skip:  Number of records to skip.  Optional.
- 
-*/location/session*:  Returns location for the specified session.  Provide a "sessionId" argument.
-
-That's it!  Lots of room for expansion. 
 
 ### Authentication and Security
 Installed Waterlock for token-based authentication.  Doing the job nicely.
