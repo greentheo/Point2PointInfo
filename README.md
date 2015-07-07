@@ -14,8 +14,17 @@ The /api/controllers area will define our actual API that clients will be able t
 
 #### Location
 
-- */location/savelocationdata*:  Saves data posted from a collector app.  Expects 'userEmail', and an array of location data objects.
-- */location/getlocationdata*: Gets location data for the specified user.  Expects 'userEmail'.  Normal user can ask for his own data.  Administrator can ask for any user's data.
+*/location/save*:  Saves data posted from a collector app.  Expects 'userEmail', and an array of location data objects.
+
+*/location/query*: Queries location data.  Supported arguments:
+
+- userEmail: Currently required (looking at changeing this)  Normal user can ask for his own data.  Administrator can ask for any user's data.
+- start:  Date string to look for location data on or after the specified date.  Specify as 'yyyy-mm-dd'.  Optional.
+- end:  Date string to look for location data on or before the specified date.  Specify as 'yyyy-mm-dd'.  Optional.
+- count: Number of records to return.  Optional.
+- skip:  Number of records to skip.  Optional.
+ 
+*/location/session*:  Returns location for the specified session.  Provide a "sessionId" argument.
 
 That's it!  Lots of room for expansion. 
 
@@ -25,10 +34,9 @@ Installed Waterlock for token-based authentication.  Doing the job nicely.
 ### Sails Policies
 Sails uses “policies" to secure areas of the site.  It’s actually pretty nifty.  You can define a policy to be whatever you want/need.   Then, you can apply that policy.
 
-Current policies:
+Current policies in use:
 
 - hasJsonWebToken:  (from Waterlock) verifies a user is logged in.
-- sessionAuth: (from Waterlock) this is not used by our app, as we're using tokens.
 - tokenAdministratorOrOwnData: verifies the user is either an administrator, or is asking for his own data.
 
 ## Manager App
