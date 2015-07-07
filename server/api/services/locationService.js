@@ -48,50 +48,90 @@ module.exports = {
     });
   },
 
-  getUserLocationData: function(userEmail, start, end, count, skip, cb) {
+  getUserLocationData: function(userEmail, start, end, latMin, latMax, longMin, longMax, userId, sessionId, count, skip, cb) {
 
-    // note: if "populate" is not called on auth's user association, then auth.user will simply
-    // be the user's id, which is all we need here.
-    Auth.findByEmail(userEmail).exec(function(err, auths) {
-      if (err) {
-        return cb(err);
-      }
+    if (userEmail && userId) {
+      return cb(new Error('Can either provide userEmail or userId, but not both.'))
+    }
 
-      // TODO: err or just empty array?
-      if (auths.length != 1) {
-        return cb(new Error('Could not find user with that email'));
-      }
+    // build our query object
+    var query = {};
 
-      // build our query object
-      var locationQuery = undefined;
-      if (start || end || count || skip) {
-        locationQuery = {};
+    // dates
 
-        if (start)
-          locationQuery.timestamp = { greaterThanOrEqual : new Date(start) };
+    if (start)
+      query.timestamp = { greaterThanOrEqual : new Date(start) };
 
-        if (end) {
-          locationQuery.timestamp = locationQuery.timestamp || {};
-          locationQuery.timestamp.lessThanOrEqual = new Date(end);
-        }
+    if (end) {
+      query.timestamp = query.timestamp || {};
+      query.timestamp.lessThanOrEqual = new Date(end);
+    }
 
-        if (count)
-          locationQuery.limit = count;
+    // latitude
 
-        if (skip)
-          locationQuery.skip = skip;
-      }
+    if (latMin)
+      query.latitude = { greaterThanOrEqual: latMin };
 
-      User
-        .findOne(auths[0].user)
-        .populate('locations', locationQuery)
-        .exec(function (err, user) {
+    if (latMax) {
+      query.latitude = query.latitude || {};
+      query.latitude.lessThanOrEqual = latMax;
+    }
+
+    // longitude
+
+    if (longMin)
+      query.longitude = { greaterThanOrEqual: longMin };
+
+    if (longMax) {
+      query.longitude = query.longitude || {};
+      query.longitude.lessThanOrEqual = longMax;
+    }
+
+    // user / session
+
+    if (userId)
+      query.user = userId;
+
+    if (sessionId)
+      query.sessionId = sessionId;
+
+    // paging
+
+    if (count)
+      query.limit = count;
+
+    if (skip)
+      query.skip = skip;
+
+    // if user has provided an email, we need to look it up via the Auth.user object to
+    // get the user id
+    if (userEmail) {
+      Auth.findByEmail(userEmail).exec(function(err, auths) {
+        if (err)
+          return cb(err);
+
+        if (auths.length != 1)
+          return cb(null, []);
+
+        // not populating user object, so it will just be the id.  perfect!
+        query.user = auths[0].user;
+
+        getLocations(query);
+      });
+    } else {
+      getLocations(query);
+    }
+
+    function getLocations(queryObject) {
+      Location
+        .find(queryObject)
+        .exec(function (err, locations) {
           if (err)
             return cb(err);
 
-          cb(null, user.locations);
+          cb(null, locations);
         });
-      });
+    }
   },
 
   getSessionLocationData: function(sessionId, cb) {
